@@ -1,125 +1,157 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
 
 <meta charset="UTF-8">
-
-<title>Port Checker - Test Open Ports Instantly | WebLabX</title>
-
-<meta name="description"
-content="Check open TCP ports instantly. Fast and accurate port checker for developers, sysadmins and DevOps engineers.">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
+<title>Port Checker | WebLabX</title>
 
-body{
-  font-family: system-ui;
-  max-width: 700px;
-  margin: 60px auto;
-}
+<meta name="description"
+content="Verifique portas TCP abertas instantaneamente. Ferramenta gratuita para diagnosticar firewalls, serviços e conectividade de rede.">
 
-input, button{
-  padding:10px;
-  margin:6px 0;
-  width:100%;
-}
-
-button{
-  cursor:pointer;
-}
-
-.result{
-  margin-top:20px;
-  padding:12px;
-  border:1px solid #ddd;
-}
-
-.open{color:green;}
-.closed{color:red;}
-.filtered{color:orange;}
-
-</style>
+<script src="/theme.js"></script>
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="port-checker.css">
 
 </head>
+
 <body>
 
-<h1>Port Checker</h1>
+<nav class="menu">
+  <div class="logo">
+    <a href="/">WebLab<span>X</span></a>
+  </div>
+</nav>
 
-<p>Instantly check if a TCP port is open on any public host.</p>
+<main class="tool-page">
 
-<input id="host" placeholder="example.com">
-
-<input id="ports" placeholder="80,443">
-
-<button onclick="scanPorts()">Scan Ports</button>
-
-<div id="results"></div>
-
-
-<script>
-
-async function scanPorts(){
-
-  const host = document.getElementById("host").value.trim();
-
-  const ports = document
-    .getElementById("ports")
-    .value
-    .split(",")
-    .map(p => parseInt(p.trim()))
-    .filter(Boolean);
-
-  if(!host || !ports.length){
-    alert("Please enter a host and at least one port.");
-    return;
-  }
-
-  const resultsDiv = document.getElementById("results");
-
-  resultsDiv.innerHTML = "Scanning...";
-
-  try{
-
-    const res = await fetch("https://api.weblabx.com/port-check",{
-      method:"POST",
-      headers:{
-        "Content-Type":"application/json"
-      },
-      body:JSON.stringify({host,ports})
-    });
-
-    const data = await res.json();
-
-    renderResults(data.results);
-
-  }catch{
-    resultsDiv.innerHTML="Error scanning ports.";
-  }
-}
+<header class="tool-header">
+  <h1>Port Checker</h1>
+  <p>
+    Verifique instantaneamente se uma porta TCP está aberta num host.
+    Ideal para diagnosticar firewalls, serviços e problemas de conectividade.
+  </p>
+</header>
 
 
-function renderResults(results){
+<!-- CARD -->
+<section class="tool-card port-card">
 
-  const div = document.getElementById("results");
+<div class="port-form">
 
-  div.innerHTML="";
+<input
+  id="host"
+  type="text"
+  placeholder="ex: google.com ou 8.8.8.8"
+  autocomplete="off"
+  autofocus
+>
 
-  results.forEach(r=>{
+<input
+  id="ports"
+  type="text"
+  placeholder="ex: 80,443,22"
+>
 
-    div.innerHTML += `
-      <div class="result">
-        Port ${r.port} —
-        <strong class="${r.status}">
-          ${r.status.toUpperCase()}
-        </strong>
-        (${r.latency}ms)
-      </div>
-    `;
-  });
-}
+<button onclick="scanPorts()">
+Scan Ports
+</button>
 
-</script>
+</div>
+
+<div id="port-result" class="port-result hidden"></div>
+
+</section>
+
+
+
+<!-- GUIDE -->
+<section class="tool-guide">
+<h2>🔎 Como verificar portas abertas</h2>
+
+<ol>
+<li>Introduza o domínio ou IP.</li>
+<li>Indique as portas separadas por vírgulas.</li>
+<li>Clique em <strong>Scan Ports</strong>.</li>
+<li>Veja imediatamente o estado de cada porta.</li>
+</ol>
+
+<p>
+Esta verificação ajuda a identificar bloqueios de firewall,
+serviços inacessíveis e erros de configuração de rede.
+</p>
+</section>
+
+
+
+<section class="tool-info">
+
+<div class="tool-card">
+
+<h2>Sobre o Port Checker</h2>
+
+<p>
+O <strong>Port Checker</strong> permite testar rapidamente se uma porta TCP
+está acessível a partir da internet.
+É uma ferramenta essencial para administradores de sistemas,
+profissionais de IT e developers.
+</p>
+
+<p>
+Serviços online dependem de portas específicas.
+Se uma porta estiver fechada ou filtrada,
+o serviço pode tornar-se inacessível.
+</p>
+
+<p>
+Com esta ferramenta pode diagnosticar problemas,
+validar configurações e garantir que a sua infraestrutura
+está corretamente exposta.
+</p>
+
+</div>
+
+
+
+<div class="tool-card">
+
+<h2>Perguntas Frequentes</h2>
+
+<div class="faq-item">
+<h3>O que significa uma porta aberta?</h3>
+<p>
+Indica que existe um serviço ativo a aceitar ligações.
+</p>
+</div>
+
+<div class="faq-item">
+<h3>O que é uma porta filtrada?</h3>
+<p>
+Normalmente significa que uma firewall está a bloquear
+o pedido externo.
+</p>
+</div>
+
+<div class="faq-item">
+<h3>Porque devo verificar portas?</h3>
+<p>
+Para diagnosticar falhas de ligação,
+validar regras de firewall e garantir acessibilidade.
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<a href="/" class="tool-back">← Voltar</a>
+
+</main>
+
+
+<script src="port-checker.js"></script>
 
 </body>
 </html>

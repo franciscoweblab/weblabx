@@ -36,5 +36,9 @@
   <url>
     <loc>https://tools.weblabx.com/tools/email-health-check/</loc>
   </url>
+  
+  <url>
+  <loc>https://tools.weblabx.com/tools/port-checker</loc>
+  </url>
 
 </urlset>
