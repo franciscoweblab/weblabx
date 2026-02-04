@@ -1,0 +1,423 @@
+<!-- Website Desenvolvido por Francisco BYDEVsFORDEVs -->
+<!DOCTYPE html>
+<html lang="pt" data-theme="dark">
+<head>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6WL5YL2ZL2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-6WL5YL2ZL2');
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>WebLab X | Web Tools & Network Utilities</title>
+  <meta name="description" content="Ferramentas online para developers e sysadmins: DNS Lookup, IP Reputation, Password Generator, network tools e utilitários web rápidos e seguros.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script src="/theme.js"></script>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+  <!-- MENU -->
+  <nav class="menu">
+    <div class="logo">
+      <a href="/">WebLab<span>X</span></a>
+    </div>
+
+    <div class="menu-links">
+      <a href="#tools">Tools</a>
+      <a href="#about">Sobre</a>
+
+      <button id="theme-toggle" class="theme-toggle" aria-label="Alternar dark mode" title="Alternar tema"> 🌙 </button>
+    </div>
+  </nav>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero hero-split">
+
+    <div class="hero-text">
+      <h1>
+        WebTools para <span class="accent">developers</span>
+      </h1>
+
+      <p>Ferramentas rápidas, gratuitas e sem complicações.</p>
+
+      <div class="hero-actions">
+        <a href="#tools" class="btn-primary">Explorar tools</a>
+
+        <div class="hero-search">
+          <input
+            type="text"
+            id="tool-search"
+            placeholder="Pesquisar tools… (ex: password, dns, json)"
+            aria-label="Pesquisar tools"
+            autocomplete="off"
+          >
+          <div class="search-results" id="search-results"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-code terminal">
+      <div class="terminal-header">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+      </div>
+
+      <div class="terminal-body" id="terminal" tabindex="0"></div>
+    </div>
+
+  </section>
+
+  <!-- TOOLS -->
+  <section id="tools" class="tools">
+
+    <div class="tool-card" data-tool="password generator passwords segurança">
+      <h3>Password Generator</h3>
+      <p>Cria passwords seguras e complexas.</p>
+      <button data-url="/tools/password-generator/">
+        Usar ferramenta
+      </button>
+    </div>
+
+    <div class="tool-card" data-tool="dns checker dominio registos">
+      <h3>DNS Checker</h3>
+      <p>Verifica registos DNS em tempo real.</p>
+      <button data-url="/tools/dns-checker/">
+        Usar ferramenta
+      </button>
+    </div>
+
+    <div class="tool-card" data-tool="http headers request response">
+      <h3>IP Reputation</h3>
+      <p>Analisa reputação de qualquer endereço de IP.</p>
+      <button data-url="/tools/ip-reputation/">
+        Usar ferramenta
+      </button>
+    </div>
+
+    <div class="tool-card" data-tool="json formatter validar formatar">
+      <h3>Subnet Calculator</h3>
+      <p>Calcula e valida subnets instantaneamente.</p>
+      <button data-url="/tools/subnet-calculator/">
+        Usar ferramenta
+      </button>
+    </div>
+
+    <div class="tool-card" data-tool="ip address ipv4 ipv6 localizacao isp asn network">
+	  <h3>What's my IP</h3>
+      <p>
+      Descobre o teu IP público (IPv4 / IPv6), localização e ISP.
+      </p>
+    <button data-url="/tools/whats-my-ip/">
+    Usar ferramenta
+    </button>
+    </div>
+
+	<div class="tool-card" data-tool="whois domain ip asn registrar">
+      <h3>WhoIs Lookup</h3>
+      <p>
+      Consulta dados de registo de domínios e IPs.
+      </p>
+    <button data-url="/tools/whois/">
+    Usar ferramenta
+    </button>
+	</div>
+	
+	<div class="tool-card" data-tool="whois domain ip asn registrar">
+      <h3>MX Lookup</h3>
+      <p>
+      Consulta os registos MX de um domínio.
+      </p>
+    <button data-url="/tools/mx-lookup/">
+    Usar ferramenta
+    </button>
+	</div>
+
+  </section>
+
+  <footer class="footer">
+    © 2026 WebLabX
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+
+      const terminal = document.getElementById("terminal");
+      let inputEl = null;
+      let currentInput = "";
+
+      /* TOOLS DISPONÍVEIS */
+      const tools = {
+        "password-generator": "/tools/password-generator",
+        "dns-checker": "/tools/dns-checker",
+        "subnet-calculator": "/tools/subnet-calculator",
+        "ip-reputation": "/tools/ip-reputation",
+        "whats-my-ip": "/tools/whats-my-ip",
+		"whois": "/tools/whois",
+		"mxlookup": "/tools/mx-lookup",
+        "http-headers": "/tools/http-headers"
+      };
+
+      /* COMANDOS */
+      const commands = {
+        ls: Object.keys(tools),
+        help: [
+          "Comandos disponíveis:",
+          "ls → listar tools",
+          "open <tool> → abrir tool",
+          "help → ajuda",
+          "clear → limpar terminal"
+        ]
+      };
+
+      document.querySelectorAll(".tool-card button").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const url = btn.dataset.url;
+          if (url) window.location.href = url;
+        });
+      });
+
+      /* ================= CORE ================= */
+
+      function createPrompt() {
+        const line = document.createElement("div");
+        line.className = "line";
+
+        line.innerHTML =
+          '<span class="prompt">weblabx@tools</span>:<span class="path">~</span>$ ' +
+          '<span class="input"></span><span class="cursor">█</span>';
+
+        terminal.appendChild(line);
+        inputEl = line.querySelector(".input");
+        currentInput = "";
+
+        terminal.scrollTop = terminal.scrollHeight;
+      }
+
+      function printOutput(text) {
+        const out = document.createElement("div");
+        out.className = "output";
+        out.textContent = text;
+        terminal.appendChild(out);
+      }
+
+      function runCommand(cmd) {
+
+        if (!cmd) {
+          createPrompt();
+          return;
+        }
+
+        const parts = cmd.split(" ");
+        const base = parts[0];
+        const arg = parts.slice(1).join(" ");
+
+        /* clear */
+        if (base === "clear") {
+          terminal.innerHTML = "";
+          createPrompt();
+          return;
+        }
+
+        /* open <tool> */
+        if (base === "open") {
+
+          if (!arg) {
+            printOutput("uso: open <tool>");
+            createPrompt();
+            return;
+          }
+
+          if (tools[arg]) {
+            printOutput(`a abrir ${arg}…`);
+            setTimeout(() => {
+              window.location.href = tools[arg];
+            }, 600);
+            return;
+          } else {
+            printOutput(`tool não encontrada: ${arg}`);
+            createPrompt();
+            return;
+          }
+        }
+
+        /* comandos normais */
+        if (commands[base]) {
+          commands[base].forEach(line => printOutput(line));
+          createPrompt();
+          return;
+        }
+
+        /* comando inválido */
+        printOutput(`comando não encontrado: ${cmd}`);
+        createPrompt();
+      }
+
+      /* ================= INPUT ================= */
+
+      terminal.addEventListener("keydown", (e) => {
+
+        if (e.key === " ") {
+          e.preventDefault();
+        }
+
+        if (!inputEl) return;
+
+        if (e.key.length === 1 && !e.ctrlKey && !e.metaKey) {
+          currentInput += e.key;
+          inputEl.textContent = currentInput;
+        }
+
+        if (e.key === "Backspace") {
+          e.preventDefault();
+          currentInput = currentInput.slice(0, -1);
+          inputEl.textContent = currentInput;
+        }
+
+        if (e.key === "Enter") {
+          e.preventDefault();
+          runCommand(currentInput.trim());
+        }
+      });
+
+      /* ================= INIT ================= */
+      createPrompt();
+
+    });
+
+    /* ================= SEARCH AUTOCOMPLETE ================= */
+
+    const toolsList = [
+      {
+        name: "Password Generator",
+        desc: "Cria passwords seguras e personalizadas",
+        url: "/tools/password-generator"
+      },
+      {
+        name: "DNS Checker",
+        desc: "Verifica registos DNS em tempo real",
+        url: "/tools/dns-checker"
+      },
+      {
+        name: "IP Reputation",
+        desc: "Analisa reputação de qualquer IP.",
+        url: "/tools/ip-reputation"
+      },
+      {
+        name: "Subnet Calculator",
+        desc: "Calcula e valida subnets instantaneamente.",
+        url: "/tools/subnet-calculator"
+      },
+	  {
+        name: "WhoIS Lookup",
+        desc: "Consulta dados de registo de domínios e IPs. ",
+        url: "/tools/whois"
+      },
+	  {
+        name: "What's my IP",
+        desc: "Descobre o teu IP público (IPv4 / IPv6), localização e ISP. ",
+        url: "/tools/whats-my-ip"
+      },
+	  
+	  {
+        name: "MX Lookup",
+        desc: "Consulta registos MX (Mail Exchange) de qualquer domínio em tempo real. ",
+        url: "/tools/mx-lookup"
+      }
+    ];
+
+    const searchInput = document.getElementById("tool-search");
+    const resultsBox = document.getElementById("search-results");
+
+    if (searchInput && resultsBox) {
+
+      searchInput.addEventListener("input", () => {
+        const query = searchInput.value.toLowerCase().trim();
+        resultsBox.innerHTML = "";
+
+        if (!query) {
+          resultsBox.style.display = "none";
+          return;
+        }
+
+        const matches = toolsList.filter(tool =>
+          tool.name.toLowerCase().includes(query)
+        );
+
+        if (!matches.length) {
+          resultsBox.style.display = "none";
+          return;
+        }
+
+        matches.forEach(tool => {
+          const item = document.createElement("div");
+          item.className = "search-item";
+          item.innerHTML = `${tool.name} <span>${tool.desc}</span>`;
+
+          item.addEventListener("click", () => {
+            window.location.href = tool.url;
+          });
+
+          resultsBox.appendChild(item);
+        });
+
+        resultsBox.style.display = "block";
+      });
+
+      searchInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          const first = resultsBox.querySelector(".search-item");
+          if (first) first.click();
+        }
+      });
+
+      document.addEventListener("click", (e) => {
+        if (!e.target.closest(".hero-search")) {
+          resultsBox.style.display = "none";
+        }
+      });
+    }
+
+    // ================= THEME TOGGLE =================
+    document.addEventListener("DOMContentLoaded", () => {
+
+      const toggle = document.getElementById("theme-toggle");
+      if (!toggle) return;
+
+      const html = document.documentElement;
+
+      const currentTheme = html.getAttribute("data-theme");
+      
+
+      toggle.addEventListener("click", () => {
+
+        const next =
+          html.getAttribute("data-theme") === "dark"
+            ? "light"
+            : "dark";
+
+        html.setAttribute("data-theme", next);
+        localStorage.setItem("theme", next);
+
+        
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>IP Reputation | WebLabX</title>
+
+  <script src="/theme.js"></script>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+<!-- MENU -->
+<nav class="menu">
+  <div class="logo">
+    <a href="/">WebLab<span>X</span></a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="tool-hero">
+  <h1>IP Reputation</h1>
+  <p>Verifica risco, origem e contexto de qualquer IP.</p>
+</section>
+
+<!-- TOOL -->
+<section class="tool-wrapper">
+
+  <div class="tool-box">
+    <input id="ipInput" placeholder="ex: 8.8.8.8">
+    <button id="checkIp">Verificar IP</button>
+  </div>
+
+  <div class="tool-result" id="result">
+    <span>Introduz um IP para análise.</span>
+  </div>
+
+</section>
+
+<!-- HISTÓRICO FORA DO TOOL-WRAPPER -->
+<section class="latest-reports">
+  <h3>Últimos IPs reportados</h3>
+
+  <div id="latestIpsGrid" class="ips-grid">
+    <div class="ips-column"></div>
+    <div class="ips-column"></div>
+    <div class="ips-column"></div>
+  </div>
+</section>
+
+
+
+</section>
+
+<!-- FOOTER -->
+<footer class="tool-footer">
+  <a href="/" class="back-link">← Voltar</a>
+</footer>
+
+<script src="./ip-reputation.js" defer></script>
+
+
+
+</body>
+</html>

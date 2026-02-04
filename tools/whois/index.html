@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>WHOIS Lookup | WebLab X</title>
+  <meta name="description" content="Consulta WHOIS de domínios e IPs. Informação de registo, registrar, datas e nameservers.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="/theme.js"></script>
+  <link rel="stylesheet" href="whois.css?v=9">
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body class="whois-page">
+
+  <!-- MENU -->
+  <nav class="menu">
+    <div class="logo">
+      <a href="/">WebLab<span>X</span></a>
+    </div>
+
+    <div class="menu-links">
+      <a href="/#tools">Tools</a>
+      <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema"></button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero hero-layout">
+
+    <div class="hero-left">
+      <h1>WHOIS Lookup</h1>
+      <p>Consulta profissional de dados de registo de domínios, baseada em fontes oficiais RDAP.</p>
+
+      <div class="tool-card">
+        <div class="subnet-row">
+          <input
+            type="text"
+            id="whois-input"
+            placeholder="ex: google.com ou 8.8.8.8"
+            autocomplete="off"
+          />
+          <button id="whois-btn">Consultar</button>
+        </div>
+
+        <div id="whois-result" class="subnet-result"></div>
+      </div>
+	  
+	  <small style="display:block; margin-top:18px; color:#64748b;">
+		A informação apresentada é obtida através de serviços públicos RDAP.
+		Alguns domínios nacionais ou reservados podem não disponibilizar
+		dados de registo completos. </small>
+	  
+    </div>
+
+  </section>
+
+  <footer class="tool-footer">
+    <a href="/" class="back-link">← Voltar</a>
+  </footer>
+
+  <script src="whois.js?v=10"></script>
+</body>
+</html>

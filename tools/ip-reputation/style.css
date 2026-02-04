@@ -1,0 +1,331 @@
+/* ================= RESET ================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ================= BASE ================= */
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+/* ================= MENU ================= */
+.menu {
+  padding: 22px 6vw;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.logo a {
+  font-size: 1.6rem;
+  font-weight: 800;
+  text-decoration: none;
+  color: var(--text-main);
+}
+
+.logo a span {
+  color: var(--primary);
+}
+
+/* ================= HERO ================= */
+.tool-hero {
+  padding: 110px 6vw 50px;
+  text-align: center;
+}
+
+.tool-hero h1 {
+  font-size: clamp(2.6rem, 5vw, 3.4rem);
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.tool-hero p {
+  color: #64748b;
+  font-size: 1.05rem;
+}
+
+/* ================= LAYOUT ================= */
+.tool-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 6vw 80px;
+  display: grid;
+  gap: 36px;
+}
+
+/* ================= INPUT ================= */
+.tool-box {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 14px;
+
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 18px;
+  padding: 24px;
+}
+
+.tool-box input {
+  height: 48px;
+  padding: 0 14px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  font-size: 0.95rem;
+}
+
+.tool-box input:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+.tool-box button {
+  height: 48px;
+  padding: 0 22px;
+  border-radius: 999px;
+  border: none;
+  background: #2563eb;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.tool-box button:hover {
+  background: #1e40af;
+}
+
+/* ================= RESULT ================= */
+.tool-result {
+  background: var(--bg-secondary);
+  color: var(--text-main);
+  border-radius: 18px;
+  padding: 26px;
+  min-height: 160px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.9rem;
+}
+
+.tool-result ul {
+  list-style: none;
+  margin-top: 20px;
+}
+
+.tool-result li {
+  margin-bottom: 6px;
+}
+
+/* ================= RISK BAR ================= */
+
+.risk-wrapper {
+  margin-bottom: 24px;
+}
+
+.risk-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-bottom: 8px;
+}
+
+.risk-bar {
+  width: 100%;
+  height: 10px;
+  background: rgba(255,255,255,0.12);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.risk-fill {
+  height: 100%;
+  width: 0;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    #22c55e 0%,
+    #facc15 50%,
+    #ef4444 100%
+  );
+}
+
+.risk-text {
+  margin-top: 8px;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.risk-text.low { color: #22c55e; }
+.risk-text.medium { color: #facc15; }
+.risk-text.high { color: #ef4444; }
+
+/* ================= REPORT IP ================= */
+
+.report-box {
+  margin-top: 28px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.report-title {
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.report-box select {
+  width: 100%;
+  height: 44px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-main);
+  color: var(--text-main);
+  padding: 0 12px;
+  margin-bottom: 12px;
+  font-family: inherit;
+}
+
+.report-box button {
+  height: 44px;
+  padding: 0 22px;
+  border-radius: 999px;
+  border: none;
+  background: #ef4444;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.report-box button:hover {
+  background: #dc2626;
+}
+
+.report-msg {
+  margin-top: 10px;
+  font-size: 0.8rem;
+  opacity: 0.85;
+}
+
+/* ================= LATEST REPORTS ================= */
+
+.latest-reports {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 6vw 80px;
+}
+
+.latest-reports h3 {
+  margin-bottom: 16px;
+}
+
+.report-item {
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: var(--bg-secondary);
+  color: var(--text-main);
+  margin-bottom: 10px;
+  font-family: ui-monospace, monospace;
+  font-size: 0.85rem;
+}
+
+.top-ip-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 12px 16px;
+  border-radius: 14px;
+  background: var(--bg-secondary);
+  color: var(--text-main);
+
+  font-family: ui-monospace, monospace;
+  font-size: 0.85rem;
+  margin-bottom: 10px;
+
+  transition: transform .15s ease, background .15s ease;
+}
+
+.top-ip-item:hover {
+  background: var(--bg-hover);
+  transform: translateY(-1px);
+}
+
+.top-ip-item strong {
+  font-weight: 600;
+}
+
+.top-ip-item span {
+  opacity: 0.7;
+  font-size: 0.75rem;
+}
+
+.ips-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.ips-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.ip-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: var(--bg-secondary);
+  color: var(--text-main);
+
+  font-family: ui-monospace, monospace;
+  font-size: 0.85rem;
+  margin-bottom: 10px;
+}
+
+.ip-item img {
+  width: 18px;
+  height: auto;
+  border-radius: 2px;
+}
+
+
+
+/* ================= FOOTER ================= */
+.tool-footer {
+  padding: 40px 6vw 60px;
+  text-align: center;
+}
+
+.back-link {
+  font-weight: 600;
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 700px) {
+  .tool-box {
+    grid-template-columns: 1fr;
+  }
+
+  .tool-box button {
+    width: 100%;
+  }
+}
+
+/* ================= DARK MODE DEPTH ================= */
+
+html[data-theme="dark"] .tool-result,
+html[data-theme="dark"] .report-item,
+html[data-theme="dark"] .top-ip-item,
+html[data-theme="dark"] .ip-item {
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+}
+

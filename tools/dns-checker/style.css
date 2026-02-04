@@ -1,0 +1,207 @@
+/* ================= TOOL PAGE (DNS CHECKER) ================= */
+
+.tool-hero {
+  padding: 110px 6vw 50px;
+  text-align: center;
+}
+
+.tool-hero h1 {
+  font-size: clamp(2.6rem, 5vw, 3.4rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+
+.tool-hero p {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+}
+
+/* ================= LAYOUT ================= */
+
+.tool-wrapper {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 40px 6vw 120px;
+  display: grid;
+  gap: 36px;
+}
+
+/* ================= INPUT BOX ================= */
+
+.tool-box {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 18px;
+  padding: 28px;
+
+  display: grid;
+  grid-template-columns: 1fr 220px auto;
+  gap: 16px;
+  align-items: end;
+}
+
+.tool-box input,
+.tool-box select {
+  height: 48px;
+  padding: 0 14px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+
+.tool-box input:focus,
+.tool-box select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37,99,235,.12);
+}
+
+.tool-box button {
+  height: 48px;
+  padding: 0 22px;
+  border-radius: 999px;
+  border: none;
+
+  background: #2563eb;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.tool-box button:hover {
+  background: #1e40af;
+}
+
+.tool-box button:last-child {
+  background: #0f172a;
+}
+
+.tool-box button:last-child:hover {
+  background: #020617;
+}
+
+
+/* ================= RESULTS ================= */
+
+.tool-result {
+  background: var(--bg-secondary);
+  color: var(--text-main);
+  border-radius: 18px;
+  padding: 26px;
+
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.9rem;
+
+  min-height: 160px;
+  max-height: 420px;
+  overflow-y: auto;
+
+  box-shadow: 0 30px 80px rgba(0,0,0,.25);
+}
+
+.tool-result span {
+  opacity: 0.6;
+}
+
+/* linhas */
+.tool-result div {
+  padding: 8px 10px;
+  border-radius: 8px;
+  margin-bottom: 6px;
+  background: rgba(255,255,255,0.04);
+}
+
+.tool-result div strong {
+  color: #60a5fa;
+  font-weight: 600;
+}
+
+.tool-result div em {
+  color: #94a3b8;
+  font-style: normal;
+}
+
+/* scroll bonito */
+.tool-result::-webkit-scrollbar {
+  width: 6px;
+}
+
+.tool-result::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.25);
+  border-radius: 6px;
+}
+
+/* ================= STATES ================= */
+
+.tool-result.loading {
+  opacity: 0.6;
+}
+
+.tool-result.error {
+  background: #450a0a;
+  color: #fecaca;
+}
+
+/* ================== MAPA ===================*/
+.dns-map {
+  margin-top: 40px;
+}
+
+.dns-map h3 {
+  margin-bottom: 16px;
+  font-size: 1.2rem;
+}
+
+.map-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.map-point {
+  padding: 14px;
+  border-radius: 12px;
+  background: var(--bg-card);
+  color: var(--text-main);
+  font-family: ui-monospace, monospace;
+  font-size: 0.85rem;
+  border: 1px solid var(--border-color);
+}
+
+
+.map-point.loading { opacity: .5; }
+.map-point.ok {
+  box-shadow: 0 0 0 2px rgba(34,197,94,.35);
+}
+.map-point.diff {
+  box-shadow: 0 0 0 2px rgba(234,179,8,.35);
+}
+.map-point.error {
+  box-shadow: 0 0 0 2px rgba(239,68,68,.35);
+}
+
+
+.hidden {
+  display: none;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 900px) {
+  .tool-box {
+    grid-template-columns: 1fr;
+  }
+
+  .tool-box button {
+    width: 100%;
+  }
+}
+
+html:not([data-theme="dark"]) .tool-result div {
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+}

@@ -1,0 +1,176 @@
+/* ================= WHOIS TOOL – LOCAL STYLES ================= */
+
+/* centra o conteúdo da tool */
+.hero.hero-layout {
+  display: flex;
+  justify-content: center;
+  padding: 100px 6vw;
+}
+
+/* limita largura do bloco principal */
+.hero-left {
+  width: 100%;
+  max-width: 520px;
+}
+
+/* card mais equilibrado */
+.hero-left .tool-card {
+  padding: 32px;
+}
+
+/* input + botão melhor alinhados */
+.subnet-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 14px;
+}
+
+/* resultado WHOIS */
+#whois-result {
+  margin-top: 22px;
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+/* labels do resultado */
+#whois-result strong {
+  display: inline-block;
+  min-width: 96px;
+  color: var(--text-main);
+}
+
+/* nameservers em lista limpa */
+#whois-result ul {
+  margin-top: 6px;
+  padding-left: 18px;
+}
+
+#whois-result li {
+  list-style: disc;
+}
+
+/* estado loading / erro */
+#whois-result span {
+  font-weight: 500;
+}
+
+/* mobile */
+@media (max-width: 640px) {
+  .hero.hero-layout {
+    padding: 80px 5vw;
+  }
+
+  .subnet-row {
+    grid-template-columns: 1fr;
+  }
+
+  .subnet-row button {
+    width: 100%;
+  }
+}
+
+.whois-page .tool-card {
+  margin-top: 40px;
+}
+
+
+
+/* ================= WHOIS RESULT GRID ================= */
+
+#whois-result {
+  margin-top: 24px;
+}
+
+/* grid base */
+.whois-grid {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 10px 18px;
+  align-items: start;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* labels */
+.whois-label {
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+/* valores */
+.whois-value {
+  color: var(--text-secondary);
+  word-break: break-word;
+}
+
+/* secção full width (ex: nameservers) */
+.whois-full {
+  grid-column: 1 / -1;
+  margin-top: 12px;
+}
+
+/* lista de nameservers */
+.whois-ns {
+  margin-top: 6px;
+  padding-left: 18px;
+}
+
+.whois-ns li {
+  list-style: disc;
+  color: var(--text-secondary);
+}
+
+/* mobile */
+@media (max-width: 640px) {
+  .whois-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .whois-label {
+    color: var(--text-main);
+  }
+}
+
+/* ================= WHOIS STATUS BADGES ================= */
+
+.whois-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.whois-badge {
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+}
+
+/* estados normais / proteção */
+.whois-badge.safe {
+  background: rgba(34, 197, 94, 0.12);
+  color: #16a34a;
+  border-color: rgba(34, 197, 94, 0.25);
+}
+
+/* estados informativos */
+.whois-badge.info {
+  background: rgba(59, 130, 246, 0.12);
+  color: #2563eb;
+  border-color: rgba(59, 130, 246, 0.25);
+}
+
+/* estados de alerta */
+.whois-badge.warn {
+  background: rgba(245, 158, 11, 0.14);
+  color: #b45309;
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+/* estados críticos */
+.whois-badge.danger {
+  background: rgba(239, 68, 68, 0.14);
+  color: #b91c1c;
+  border-color: rgba(239, 68, 68, 0.3);
+}

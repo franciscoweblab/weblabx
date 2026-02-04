@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>What's My IP | WebLabX</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- Leaflet -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    defer
+  ></script>
+
+  <!-- Theme + Styles -->
+  <script src="/theme.js"></script>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="ip-tool.css">
+</head>
+
+<body>
+
+<nav class="menu">
+  <div class="logo">
+    <a href="/">WebLab<span>X</span></a>
+  </div>
+</nav>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero hero-ip">
+    <h1>What's my <span class="accent">IP address</span>?</h1>
+    <p>
+      A ferramenta What's my IP mostra instantaneamente o endereço IP público
+      (IPv4 ou IPv6) do teu dispositivo quando acede à Internet.
+    </p>
+  </section>
+
+  <!-- IP + MAP -->
+  <section class="ip-two-boxes">
+
+    <div class="ip-box ip-details">
+
+      <div class="tool-card">
+        <h3>O teu IP público</h3>
+        <p id="ip">A carregar…</p>
+
+        <div class="ip-actions">
+          <small id="ip-version"></small>
+          <button id="copy-ip" class="btn-inline">Copiar IP</button>
+        </div>
+      </div>
+
+      <div class="tool-card">
+        <h3>Localização</h3>
+        <p id="location">A carregar…</p>
+        <small id="coords"></small>
+      </div>
+
+      <div class="tool-card">
+        <h3>ISP / ASN</h3>
+        <p id="isp">A carregar…</p>
+        <small id="timezone"></small>
+
+        <button id="ip-reputation" class="btn-link">
+          Ver reputação do IP →
+        </button>
+      </div>
+
+    </div>
+
+    <div class="ip-box ip-map">
+      <div id="ip-map"></div>
+    </div>
+
+  </section>
+
+  <!-- INFO BOX -->
+  <section class="ip-info-wrapper">
+    <div class="ip-box ip-info-box">
+
+      <h2>What Is My IP Address (IPv4 & IPv6)?</h2>
+
+      <p>
+        O endereço IP público é o identificador único atribuído ao teu dispositivo
+        quando te ligas à Internet. Com a ferramenta <strong>What’s My IP</strong>,
+        podes ver instantaneamente o teu IP público (IPv4 ou IPv6) e outras
+        informações úteis sobre a tua ligação.
+      </p>
+
+      <p>
+        Sempre que usas uma nova rede Wi-Fi ou mudas de dispositivo, o endereço IP
+        pode ser diferente. Saber qual é o teu IP ajuda em tarefas como configuração
+        de redes, resolução de problemas e análise de tráfego.
+      </p>
+
+      <h3>Informações apresentadas pela ferramenta</h3>
+
+      <ul class="ip-info-list">
+        <li><strong>Localização aproximada:</strong> região associada ao IP (não é GPS).</li>
+        <li><strong>ISP:</strong> fornecedor do serviço de Internet.</li>
+        <li><strong>Sistema operativo:</strong> Windows, macOS, Linux, Android, etc.</li>
+        <li><strong>Navegador:</strong> Chrome, Firefox, Safari, entre outros.</li>
+        <li><strong>Resolução do ecrã:</strong> tamanho do ecrã do dispositivo.</li>
+        <li><strong>Latitude e longitude:</strong> coordenadas aproximadas do IP.</li>
+      </ul>
+
+      <p class="ip-note">
+        Nota: a localização do IP não é 100% precisa e indica apenas a zona onde o
+        endereço IP está registado.
+      </p>
+
+    </div>
+  </section>
+  
+  <section class="ip-faq-wrapper">
+  <div class="ip-box ip-faq-box">
+
+    <h2>FAQs</h2>
+
+    <div class="faq-item">
+      <h3>O que é um endereço IP privado e como o podes encontrar?</h3>
+      <p>
+        Um endereço IP privado é utilizado para identificar dispositivos dentro
+        de uma rede local. Quando um dispositivo comunica com outros dispositivos
+        ou com o router da rede, utiliza um IP privado. Para comunicar com a
+        Internet, é atribuído um endereço IP público.
+      </p>
+      <p>
+        Podes encontrar o IP privado do teu dispositivo abrindo a linha de comandos
+        (CMD), escrevendo <strong>ipconfig</strong> e pressionando Enter.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>O que é uma VPN e que relação tem com o IP público?</h3>
+      <p>
+        VPN significa <em>Virtual Private Network</em>. Ao ligares-te a uma VPN,
+        o teu endereço IP público é alterado para outro, normalmente associado a
+        um país diferente.
+      </p>
+      <p>
+        As VPNs são usadas para aceder a conteúdos bloqueados por região e também
+        por motivos de privacidade, uma vez que escondem o teu IP público real
+        durante a navegação.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>É possível alguém rastrear a minha localização exata através do meu endereço IP?</h3>
+      <p>
+        Não. Um endereço IP não permite identificar a localização exata de uma
+        pessoa. Apenas fornece uma localização aproximada, como cidade ou região,
+        e nunca dados específicos como rua ou número da casa.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+</main>
+
+<footer class="footer">
+  © 2026 WebLabX
+</footer>
+
+<script src="scriptv2.js"></script>
+</body>
+</html>

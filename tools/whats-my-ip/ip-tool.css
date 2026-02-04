@@ -1,0 +1,150 @@
+/* =========================
+   HERO
+========================= */
+.hero.hero-ip {
+  padding: 64px 3vw 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.hero.hero-ip h1 {
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.hero.hero-ip p {
+  margin-top: 12px;
+  font-size: 1.05rem;
+}
+
+/* =========================
+   IP + MAP BOXES
+========================= */
+section.ip-two-boxes {
+  padding: 80px 6vw 120px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+/* Base box (shared) */
+.ip-box {
+  background: var(--bg-main);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 32px;
+}
+
+/* Left side: IP details */
+.ip-details {
+  display: grid;
+  gap: 20px;
+}
+
+/* Right side: Map */
+.ip-map {
+  padding: 0;
+  overflow: hidden;
+}
+
+#ip-map {
+  width: 100%;
+  height: 100%;
+  min-height: 520px;
+}
+
+/* =========================
+   INFO BOX (SAME WIDTH)
+========================= */
+.ip-info-wrapper {
+  padding: 0 6vw 120px;
+}
+
+.ip-info-box {
+  width: 100%;
+}
+
+.ip-info-box h2 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+
+.ip-info-box h3 {
+  margin-top: 32px;
+  margin-bottom: 12px;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.ip-info-box p {
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+/* Info list */
+.ip-info-list {
+  padding-left: 20px;
+  margin-bottom: 16px;
+}
+
+.ip-info-list li {
+  margin-bottom: 8px;
+}
+
+/* Note */
+.ip-note {
+  margin-top: 24px;
+  font-size: 0.9rem;
+  opacity: 0.75;
+}
+
+/* =========================
+   FAQ BOX (SAME WIDTH)
+========================= */
+.ip-faq-wrapper {
+  padding: 0 6vw 120px;
+}
+
+.ip-faq-box {
+  width: 100%;
+}
+
+.ip-faq-box h2 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 32px;
+}
+
+.faq-item + .faq-item {
+  margin-top: 32px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border-color);
+}
+
+.faq-item h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.faq-item p {
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 900px) {
+  section.ip-two-boxes {
+    grid-template-columns: 1fr;
+  }
+
+  #ip-map {
+    min-height: 320px;
+  }
+}

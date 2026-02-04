@@ -1,0 +1,80 @@
+<!-- Website Desenvolvido por Francisco BYDEVsFORDEVs -->
+
+<!DOCTYPE html>
+<html lang="pt" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <title>Password Generator • WebLabX</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<script src="/theme.js"></script>
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/tools/password-generator/style.css">
+</head>
+
+<body>
+
+<main class="tool-wrapper">
+
+  <header class="tool-header">
+    <h1>Password Generator</h1>
+    <p>Gera passwords seguras, fortes e personalizadas em segundos.</p>
+  </header>
+
+  <section class="tool-card">
+
+    <!-- OUTPUT -->
+    <div class="password-output">
+      <input type="text" id="result" placeholder="Clique em gerar…" readonly>
+      <button id="copy">Copiar</button>
+    </div>
+
+    <!-- FORÇA -->
+    <div class="strength">
+      <div class="strength-bar">
+        <span id="strength-fill"></span>
+      </div>
+      <span class="strength-label" id="strength-text">—</span>
+    </div>
+
+    <!-- OPÇÕES -->
+    <div class="options">
+
+      <div class="option-row">
+        <label>Comprimento</label>
+        <div class="range-wrap">
+          <input type="range" id="length" min="6" max="64" value="16">
+          <span id="length-value">16</span>
+        </div>
+      </div>
+
+      <div class="checkboxes">
+        <label><input type="checkbox" id="lower" checked> Minúsculas</label>
+        <label><input type="checkbox" id="upper" checked> Maiúsculas</label>
+        <label><input type="checkbox" id="numbers" checked> Números</label>
+        <label><input type="checkbox" id="symbols"> Símbolos</label>
+      </div>
+
+    </div>
+
+    <!-- AÇÕES -->
+    <div class="actions">
+      <button class="generate-btn" id="generate">Gerar</button>
+      <button class="regen-btn" id="regen">Regenerar</button>
+    </div>
+
+  </section>
+
+  <footer class="tool-footer">
+    <a href="/" class="back-link">← Voltar</a>
+  </footer>
+
+</main>
+
+<script src="script.js?v=20260122"></script>
+</body>
+</html>

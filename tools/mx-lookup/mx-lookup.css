@@ -1,0 +1,288 @@
+/* ==================================================
+   PAGE LAYOUT
+================================================== */
+
+.tool-page {
+  min-height: calc(100vh - 80px);
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 24px 96px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tool-header {
+  text-align: center;
+  max-width: 720px;
+  margin-top: 48px;
+  margin-bottom: 72px;
+}
+
+.tool-header h1 {
+  font-size: 3.2rem;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+
+.tool-header p {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+}
+
+/* ==================================================
+   MAIN TOOL CARD (FORM)
+================================================== */
+
+.mx-card {
+  width: 100%;
+  max-width: 720px;
+  padding: 28px;
+  border-radius: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  margin-bottom: 10px;
+}
+
+/* ==================================================
+   FORM
+================================================== */
+
+.mx-form {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.mx-form input {
+  flex: 1;
+}
+
+.mx-form input,
+.mx-form select {
+  height: 52px;
+  padding: 0 16px;
+  border-radius: 14px;
+  font-size: 0.95rem;
+}
+
+.mx-form button {
+  height: 52px;
+  padding: 0 28px;
+  border-radius: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ==================================================
+   RESULT
+================================================== */
+
+.mx-result {
+  margin-top: 32px;
+  font-size: 0.95rem;
+}
+
+/* ==================================================
+   SUMMARY
+================================================== */
+
+.mx-summary {
+  margin-bottom: 16px;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.mx-summary.ok {
+  color: #22c55e;
+}
+
+.mx-summary.warn {
+  color: #f59e0b;
+}
+
+.mx-summary.error {
+  color: #ef4444;
+}
+
+/* ==================================================
+   TABLE
+================================================== */
+
+.mx-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 8px;
+}
+
+.mx-table th {
+  text-align: left;
+  padding: 12px 0;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.mx-table td {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* ==================================================
+   INFO + FAQ SECTION
+================================================== */
+
+.tool-info {
+  width: 100%;
+  max-width: 860px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+/* INFO / FAQ CARDS */
+
+.mx-info .tool-card {
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 22px;
+  padding: 42px;
+}
+
+/* ==================================================
+   TEXT STYLES
+================================================== */
+
+.mx-info h2 {
+  font-size: 1.9rem;
+  margin-bottom: 18px;
+  color: #ffffff;
+}
+
+.mx-info p {
+  font-size: 1.02rem;
+  line-height: 1.7;
+  color: #cbd5f5;
+  max-width: 65ch;
+  margin-bottom: 14px;
+}
+
+/* ==================================================
+   TOOL GUIDE
+================================================== */
+
+.tool-guide {
+    max-width: 720px;
+    margin: 72px auto;
+    padding: 28px 32px;
+
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+
+    background: rgba(255,255,255,0.02); /* MUITO subtil */
+} 
+
+.tool-guide h2 {
+    margin-bottom: 16px;
+    font-size: 1.55rem;
+}
+
+.tool-guide ol {
+    padding-left: 20px;
+    line-height: 1.8;
+}
+
+.tool-guide p {
+    margin-top: 12px;
+    color: var(--text-secondary);
+}
+
+/* ==================================================
+   FAQ
+================================================== */
+
+.mx-faq .faq-item + .faq-item {
+  margin-top: 28px;
+}
+
+.mx-faq h3 {
+  font-size: 1.1rem;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+
+/* ==================================================
+   CODE
+================================================== */
+
+.mx-info code {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+/* ==================================================
+   BADGE
+================================================== */
+
+.mx-badge {
+  margin-left: 8px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background: rgba(34, 197, 94, 0.15);
+  color: #22c55e;
+  vertical-align: middle;
+}
+
+/* ==================================================
+   BACK LINK
+================================================== */
+
+.tool-back {
+  margin-top: 96px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  opacity: 0.75;
+}
+
+.tool-back:hover {
+  opacity: 1;
+}
+
+/* ==================================================
+   UTIL
+================================================== */
+
+.hidden {
+  display: none;
+}
+
+/* ==================================================
+   MOBILE
+================================================== */
+
+@media (max-width: 700px) {
+  .tool-header h1 {
+    font-size: 2.4rem;
+  }
+
+  .mx-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .mx-form button {
+    width: 100%;
+  }
+
+  .mx-card {
+    padding: 28px;
+    margin-bottom: 72px;
+  }
+
+  .mx-info .tool-card {
+    padding: 32px;
+  }
+}
