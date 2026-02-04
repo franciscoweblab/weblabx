@@ -1,100 +1,81 @@
-/* CARD */
+/* ================= PORT FORM ================= */
 
-.port-card{
-  width:100%;
-  max-width:720px;
-  padding:28px;
-  border-radius:16px;
-  background:var(--bg-card);
-  border:1px solid var(--border-color);
-  box-shadow:0 8px 24px rgba(0,0,0,0.05);
-  margin-bottom:10px;
+.tool-form{
+    display:flex;
+    gap:16px;
+    align-items:stretch;
+}
+
+.tool-form input{
+    flex:1;
+}
+
+/* usa o estilo base dos inputs */
+.tool-form input,
+.tool-form button{
+    height:52px;
+    padding:0 16px;
+    border-radius:14px;
+    font-size:0.95rem;
 }
 
 
-/* FORM */
+/* ================= RESULT ================= */
 
-.port-form{
-  display:flex;
-  gap:16px;
-  align-items:center;
-}
-
-.port-form input{
-  flex:1;
-}
-
-.port-form input,
-.port-form button{
-  height:52px;
-  padding:0 16px;
-  border-radius:14px;
-  font-size:0.95rem;
-}
-
-.port-form button{
-  padding:0 28px;
-  font-weight:600;
-  white-space:nowrap;
-  cursor:pointer;
+.tool-result{
+    margin-top:32px;
 }
 
 
-/* RESULT */
+/* ================= TABLE ================= */
 
-.port-result{
-  margin-top:32px;
+.tool-table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:8px;
 }
 
-/* TABLE */
-
-.port-table{
-  width:100%;
-  border-collapse:collapse;
+.tool-table th{
+    text-align:left;
+    padding:12px 0;
+    border-bottom:2px solid var(--border-color);
 }
 
-.port-table th{
-  text-align:left;
-  padding:12px 0;
-  border-bottom:2px solid var(--border-color);
-}
-
-.port-table td{
-  padding:12px 0;
-  border-bottom:1px solid var(--border-color);
+.tool-table td{
+    padding:12px 0;
+    border-bottom:1px solid var(--border-color);
 }
 
 
-/* STATUS COLORS */
+/* ================= STATUS ================= */
 
 .status-open{
-  color:#22c55e;
-  font-weight:600;
+    color:#22c55e;
+    font-weight:600;
 }
 
 .status-closed{
-  color:#ef4444;
-  font-weight:600;
+    color:#ef4444;
+    font-weight:600;
 }
 
 .status-filtered{
-  color:#f59e0b;
-  font-weight:600;
+    color:#f59e0b;
+    font-weight:600;
 }
 
 
 
-/* MOBILE */
+/* ================= MOBILE ================= */
 
 @media(max-width:700px){
 
-.port-form{
-  flex-direction:column;
-  align-items:stretch;
+.tool-form{
+    flex-direction:column;
 }
 
-.port-form button{
-  width:100%;
+.tool-form button{
+    width:100%;
 }
 
 }

@@ -11,7 +11,7 @@ alert("Introduza um host e pelo menos uma porta.");
 return;
 }
 
-const resultDiv=document.getElementById("port-result");
+const resultDiv=document.getElementById("tool-result");
 
 resultDiv.classList.remove("hidden");
 resultDiv.innerHTML="A verificar portas...";
@@ -42,7 +42,7 @@ resultDiv.innerHTML="Erro ao verificar portas.";
 
 function renderResults(results){
 
-const div=document.getElementById("port-result");
+const div=document.getElementById("tool-result");
 
 let html=`
 <table class="port-table">
