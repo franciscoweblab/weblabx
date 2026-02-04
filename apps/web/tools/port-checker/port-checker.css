@@ -76,6 +76,9 @@
 
 .tool-card{
     margin-top:32px;
+    max-width:720px;
+    width:100%;
+}
 }
 
 
