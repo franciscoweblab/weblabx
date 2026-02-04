@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://tools.weblabx.com/</loc>
+  </url>
+
+  <url>
+    <loc>https://tools.weblabx.com/tools/mx-lookup/</loc>
+  </url>
+
+  <url>
+    <loc>https://tools.weblabx.com/tools/dns-checker/</loc>
+  </url>
+
+  <url>
+    <loc>https://tools.weblabx.com/tools/whois/</loc>
+  </url>
+
+  <url>
+    <loc>https://tools.weblabx.com/tools/password-generator/</loc>
+  </url>
+
+  <url>
+    <loc>https://tools.weblabx.com/tools/ip-reputation/</loc>
+  </url>
+
+  <url>
+    <loc>https://tools.weblabx.com/tools/subnet-calculator/</loc>
+  </url>
+
+  <url>
+    <loc>https://tools.weblabx.com/tools/whats-my-ip/</loc>
+  </url>
+
+  <url>
+    <loc>https://tools.weblabx.com/tools/email-health-check/</loc>
+  </url>
+
+</urlset>
