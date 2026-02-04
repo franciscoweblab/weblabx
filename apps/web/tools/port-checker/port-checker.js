@@ -42,33 +42,44 @@ resultDiv.innerHTML="Erro ao verificar portas.";
 
 function renderResults(results){
 
-const div=document.getElementById("tool-result");
+const div = document.getElementById("tool-result");
 
-let html=`
-<table class="port-table">
+div.classList.remove("hidden");
+
+div.innerHTML = `
+<table class="tool-table">
+
+<thead>
 <tr>
 <th>Porta</th>
 <th>Estado</th>
 <th>Latência</th>
 </tr>
-`;
+</thead>
 
-results.forEach(r=>{
-
-html+=`
+<tbody>
+${results.map(r => `
 <tr>
-<td>${r.port}</td>
-<td class="status-${r.status}">
-${r.status.toUpperCase()}
+
+<td class="port">
+${r.port}
 </td>
-<td>${r.latency}ms</td>
+
+<td>
+<span class="status-badge status-${r.status}">
+${r.status.toUpperCase()}
+</span>
+</td>
+
+<td class="latency">
+${r.latency}ms
+</td>
+
 </tr>
+`).join("")}
+</tbody>
+
+</table>
 `;
-
-});
-
-html+=`</table>`;
-
-div.innerHTML=html;
 
 }
