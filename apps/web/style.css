@@ -116,6 +116,26 @@ body {
     font-size: 1.2rem;
     color: var(--text-secondary);
 }
+
+/* ================= GLOBAL INPUT ================= */
+
+input{
+  height:52px;
+  padding:0 16px;
+  border-radius:14px;
+  border:1px solid var(--border-color);
+  background:var(--bg-main);
+  color:var(--text-main);
+  font-family:inherit;
+  font-size:0.95rem;
+}
+
+input:focus{
+  outline:none;
+  border-color:var(--primary);
+  box-shadow:0 0 0 3px var(--primary-soft);
+}
+
 /* ================= TOOLS ================= */
 .tools {
     padding: 80px 6vw;
@@ -155,6 +175,30 @@ body {
 .tool-card button:hover {
     background: var(--primary-hover);
 }
+
+/* ================= TOOL SYSTEM ================= */
+
+
+.tool-page {
+  min-height: calc(100vh - 80px);
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 24px 96px;
+  display: flex;
+  flex-direction: column;
+}
+
+.tool-header{
+  max-width:720px;
+  margin-top:48px;
+  margin-bottom:48px;
+}
+
+.tool-header p{
+  color:var(--text-secondary);
+}
+
+
 /* ================= ABOUT ================= */
 .about {
     padding: 100px 6vw;
