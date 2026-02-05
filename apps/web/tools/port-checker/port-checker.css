@@ -126,6 +126,35 @@
     color:var(--text-secondary);
 }
 
+/* ==================================================
+   TOOL GUIDE
+================================================== */
+
+.tool-guide {
+    max-width: 720px;
+    margin: 72px auto;
+    padding: 28px 32px;
+
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+
+    background: rgba(255,255,255,0.02); /* MUITO subtil */
+} 
+
+.tool-guide h2 {
+    margin-bottom: 16px;
+    font-size: 1.55rem;
+}
+
+.tool-guide ol {
+    padding-left: 20px;
+    line-height: 1.8;
+}
+
+.tool-guide p {
+    margin-top: 12px;
+    color: var(--text-secondary);
+}
 
 /* ================= CARD SPACING ================= */
 
