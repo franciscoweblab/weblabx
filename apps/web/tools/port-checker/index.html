@@ -5,10 +5,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Port Checker | WebLabX</title>
+<title>Open Port Checker | WebLabX</title>
 
 <meta name="description"
-content="Verifique portas TCP abertas instantaneamente. Ferramenta gratuita para diagnosticar firewalls, serviços e conectividade de rede.">
+content="Instantly check open TCP ports on any host. Free online tool to diagnose firewall rules, detect network issues, and verify service availability in seconds.">
 
 <script src="/theme.js"></script>
 <script src="/analytics.js"></script>
@@ -31,8 +31,7 @@ content="Verifique portas TCP abertas instantaneamente. Ferramenta gratuita para
 <header class="tool-header">
   <h1>Port Checker</h1>
   <p>
-    Verifique instantaneamente se uma porta TCP está aberta num host.
-    Ideal para diagnosticar firewalls, serviços e problemas de conectividade.
+    Instantly check whether a TCP port is open on any host. Diagnose firewall issues, verify services, and troubleshoot network connectivity in seconds.
   </p>
 </header>
 
@@ -46,7 +45,7 @@ content="Verifique portas TCP abertas instantaneamente. Ferramenta gratuita para
   class="input"
   id="host"
   type="text"
-  placeholder="ex: google.com ou 8.8.8.8"
+  placeholder="e.g : google.com or 8.8.8.8"
   autocomplete="off"
   autofocus
 >
@@ -55,7 +54,7 @@ content="Verifique portas TCP abertas instantaneamente. Ferramenta gratuita para
   class="input"
   id="ports"
   type="text"
-  placeholder="ex: 80,443,22"
+  placeholder="e.g : 80,443,22"
 >
 
 <button class="btn btn-primary" onclick="scanPorts()">
@@ -73,18 +72,18 @@ Scan Ports
 <!-- GUIDE -->
 <section class="tool-guide">
 
-<h2>🔎 Como verificar portas abertas</h2>
+<h2>🔎 How to check open ports</h2>
 
 <ol>
-<li>Introduza o domínio ou IP.</li>
-<li>Indique as portas separadas por vírgulas.</li>
-<li>Clique em <strong>Scan Ports</strong>.</li>
-<li>Veja imediatamente o estado de cada porta.</li>
+<li>Enter the domain or IP address.</li>
+<li>Specify the ports separated by commas.</li>
+<li>Click <strong>Scan Ports</strong>.</li>
+<li>Instantly view the status of each port.</li>
 </ol>
 
 <p>
-Esta verificação ajuda a identificar bloqueios de firewall,
-serviços inacessíveis e erros de configuração de rede.
+This check helps identify firewall blocks,
+inaccessible services, and network configuration errors.
 </p>
 
 </section>
@@ -94,56 +93,65 @@ serviços inacessíveis e erros de configuração de rede.
 
 <div class="tool-card subnet-info-card">
 
-<h2>Sobre o Port Checker</h2>
+<h2>About Port Checker</h2>
 
 <p>
-O <strong>Port Checker</strong> permite testar rapidamente se uma porta TCP
-está acessível a partir da internet.
-É uma ferramenta essencial para administradores de sistemas,
-profissionais de IT e developers.
+<strong>Port Checker</strong> lets you verify whether a TCP port is reachable from the internet.
+Below are the most commonly used ports and their purpose.
 </p>
 
-<p>
-Serviços online dependem de portas específicas.
-Se uma porta estiver fechada ou filtrada,
-o serviço pode tornar-se inacessível.
-</p>
+<h3>Common Ports</h3>
 
-<p>
-Com esta ferramenta pode diagnosticar problemas,
-validar configurações e garantir que a sua infraestrutura
-está corretamente exposta.
-</p>
-
-</div>
+<table class="ports-table">
+  <thead>
+    <tr>
+      <th>Port</th>
+      <th>Service</th>
+      <th>Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>21</td><td>FTP</td><td>File transfers between systems</td></tr>
+    <tr><td>22</td><td>SSH</td><td>Secure remote server access</td></tr>
+    <tr><td>23</td><td>Telnet</td><td>Legacy remote access (not secure)</td></tr>
+    <tr><td>25</td><td>SMTP</td><td>Email delivery between servers</td></tr>
+    <tr><td>53</td><td>DNS</td><td>Resolves domains to IP addresses</td></tr>
+    <tr><td>80</td><td>HTTP</td><td>Standard web traffic</td></tr>
+    <tr><td>443</td><td>HTTPS</td><td>Encrypted web traffic</td></tr>
+    <tr><td>110</td><td>POP3</td><td>Downloads email locally</td></tr>
+    <tr><td>143</td><td>IMAP</td><td>Syncs email across devices</td></tr>
+    <tr><td>3389</td><td>RDP</td><td>Remote Windows access</td></tr>
+  </tbody>
+</table>
+</div> 
 
 
 
 <div class="tool-card">
 
-<h2>Perguntas Frequentes</h2>
+<h2>FAQs</h2>
 
 <div class="faq-item">
-<h3>O que significa uma porta aberta?</h3>
+<h3>What does an open port mean?</h3>
 <p>
-Uma porta aberta indica que existe um serviço ativo no servidor ou dispositivo a aceitar ligações externas. 
-Isto significa que a comunicação está disponível e que aplicações, websites ou sistemas podem estabelecer ligação através dessa porta específica.
+An open port indicates that an active service on the server or device is accepting external connections.
+This means communication is available and applications, websites, or systems can connect through that specific port.
 </p>
 </div>
 
 <div class="faq-item">
-<h3>O que é uma porta filtrada?</h3>
+<h3>What is a filtered port?</h3>
 <p>
-Uma porta filtrada normalmente indica que uma firewall, router ou sistema de segurança está a bloquear ou a limitar o acesso externo. 
-Nestes casos, não é possível confirmar se o serviço está ativo, pois os pedidos são impedidos antes de chegar ao destino.
+A filtered port usually indicates that a firewall, router, or security system is blocking or restricting external access.
+In these cases, it is not possible to confirm whether the service is active because requests are prevented from reaching the destination.
 </p>
 </div>
 
 <div class="faq-item">
-<h3>Porque devo verificar portas?</h3>
+<h3>Why should I check ports?</h3>
 <p>
-Verificar portas é essencial para diagnosticar problemas de conectividade, confirmar se as regras de firewall estão corretamente configuradas e garantir que serviços críticos estão acessíveis. 
-Esta prática ajuda a reforçar a segurança da rede, identificar configurações incorretas e manter o bom funcionamento de aplicações e servidores.
+Checking ports is essential for diagnosing connectivity issues, confirming that firewall rules are correctly configured, and ensuring that critical services are accessible.
+This practice helps strengthen network security, identify misconfigurations, and maintain the proper operation of applications and servers.
 </p>
 </div>
 
@@ -153,7 +161,7 @@ Esta prática ajuda a reforçar a segurança da rede, identificar configuraçõe
 
 
  <footer class="tool-footer">
-    <a href="/" class="back-link">← Voltar</a>
+    <a href="/" class="back-link">← Back</a>
   </footer>
 </div> 
 </main>

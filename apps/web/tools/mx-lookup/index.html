@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="en">
 <head>
   <meta name="description" content="Instantly check MX records for any domain. Identify mail servers, priorities and misconfigurations in seconds with this free MX lookup tool.">
   <meta charset="UTF-8">
@@ -22,30 +22,32 @@
 </nav>
 
 <main class="tool-page">
+<div class="tool-container">
 
   <header class="tool-header">
     <h1>MX Lookup</h1>
-    <p>Consulta registos MX (Mail Exchange) de qualquer domínio em tempo real.</p>
+    <p>Query MX (Mail Exchange) records for any domain in real time.</p>
   </header>
 
-  <!-- FORM CARD -->
-  <section class="tool-card mx-card">
+  <!-- FORM -->
+  <section class="tool-card">
 
     <div class="mx-form">
       <input
         id="mx-domain"
+        class="input"
         type="text"
-        placeholder="ex: weblabx.com"
+        placeholder="e.g. weblabx.com"
         autocomplete="off"
         autofocus
       >
 
-      <select id="dns-server">
+      <select id="dns-server" class="select">
         <option value="google">Google DNS</option>
         <option value="cloudflare">Cloudflare DNS</option>
       </select>
 
-      <button type="button" onclick="lookupMX()">
+      <button class="btn btn-primary" type="button" onclick="lookupMX()">
         Check MX Record
       </button>
     </div>
@@ -53,97 +55,65 @@
     <div id="mx-result" class="mx-result hidden"></div>
 
   </section>
-  
-  <section class="tool-guide">
-  <h2>🔎 Como verificar os registos MX de qualquer domínio</h2>
 
-  <ol>
-    <li>Introduza o domínio que pretende analisar.</li>
-    <li>Escolha o servidor DNS.</li>
-    <li>Clique em "Check MX Record".</li>
-    <li>Analise os servidores de email e prioridades.</li>
-  </ol>
+  <!-- GUIDE -->
+  <section class="tool-card tool-guide">
+    <h2>How to check MX records</h2>
 
-  <p>
-    Verificar os registos MX ajuda a garantir que o domínio consegue
-    receber emails corretamente e evita falhas de entrega.
-  </p>
-</section>
+    <ol>
+      <li>Enter the domain.</li>
+      <li>Select the DNS server.</li>
+      <li>Click "Check MX Record".</li>
+      <li>Review the mail servers.</li>
+    </ol>
 
-  <section class="tool-info">
+    <p>
+      Checking MX records ensures your domain can receive emails correctly
+      and helps prevent delivery failures.
+    </p>
+  </section>
 
-    <div class="tool-card">
-      <h2>Sobre o MX Lookup</h2>
+  <!-- INFO -->
+  <section class="tool-card">
+    <h2>About MX Lookup</h2>
 
-<p>
-  <strong>MX Lookup</strong> é uma ferramenta online gratuita que permite consultar,
-  em tempo real, os registos MX (Mail Exchange) de qualquer domínio.
-  Estes registos fazem parte do sistema DNS e são responsáveis por indicar
-  quais os servidores de email autorizados a receber mensagens para um domínio.
-</p>
+    <p>
+      <strong>MX Lookup</strong> is a free online tool that lets you query
+      the MX (Mail Exchange) records of any domain in real time.
+    </p>
 
-<p>
-  Ao analisar os registos MX, é possível identificar os servidores de email
-  configurados, a respetiva prioridade, o hostname associado e verificar se
-  a infraestrutura de email está corretamente configurada.
-  Uma configuração incorreta pode resultar em falhas de entrega,
-  emails rejeitados ou atrasos significativos.
-</p>
+    <p>
+      These records define which mail servers are authorized to receive
+      messages for a domain. Incorrect configurations can cause delivery failures.
+    </p>
+  </section>
 
-<p>
-  Esta ferramenta é especialmente útil para administradores de sistemas,
-  profissionais de IT, técnicos de email marketing e utilizadores que pretendem
-  diagnosticar problemas de email, validar configurações DNS ou preparar a
-  migração de serviços de correio eletrónico.
-</p>
+  <!-- FAQ -->
+  <section class="tool-card">
+    <h2>FAQ</h2>
+
+    <div class="faq-item">
+      <h3>What is an MX record?</h3>
+      <p>
+        An MX record defines which servers receive emails for a domain.
+      </p>
     </div>
 
-    <div class="tool-card">
-      <h2>Perguntas Frequentes</h2>
-
-      <div class="faq-item">
-       <h3>O que é um registo MX?</h3>
-<p>
-  Um registo MX (Mail Exchange) é um tipo de registo DNS que define
-  quais os servidores responsáveis por receber emails destinados a um domínio.
-  Sem registos MX válidos, um domínio não consegue receber correio eletrónico,
-  mesmo que existam contas de email configuradas.
-</p>
-      </div>
-
-      <div class="faq-item">
-        <h3>O que significa a prioridade nos registos MX?</h3>
-<p>
-  A prioridade indica a ordem pela qual os servidores de email devem ser utilizados.
-  Quanto menor o valor numérico, maior a prioridade do servidor.
-  O servidor com a prioridade mais baixa é sempre tentado primeiro,
-  sendo os restantes utilizados apenas em caso de falha.
-</p>
-
-      </div>
-
-      <div class="faq-item">
-       <h3>Porque é importante verificar os registos MX?</h3>
-<p>
-  Verificar os registos MX é essencial para garantir que o email de um domínio
-  está corretamente configurado.
-  Esta verificação ajuda a identificar erros comuns, como servidores inexistentes,
-  prioridades incorretas ou apontamentos para serviços descontinuados,
-  que podem causar falhas na entrega ou rejeição de mensagens.
-</p>
-
-        </p>
-      </div>
+    <div class="faq-item">
+      <h3>What does priority mean?</h3>
+      <p>
+        Lower numbers indicate higher priority mail servers.
+      </p>
     </div>
 
   </section>
 
-   <footer class="tool-footer">
-    <a href="/" class="back-link">← Voltar</a>
+  <footer class="tool-footer">
+    <a href="/" class="back-link">← Back</a>
   </footer>
 
+</div>
 </main>
-
 
 <script src="mx-lookup.js?v=dev"></script>
 </body>

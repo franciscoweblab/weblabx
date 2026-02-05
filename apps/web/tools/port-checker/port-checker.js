@@ -7,14 +7,14 @@ const ports=document.getElementById("ports").value
 .filter(Boolean);
 
 if(!host || !ports.length){
-alert("Introduza um host e pelo menos uma porta.");
+alert("Enter a host and at least one port.");
 return;
 }
 
 const resultDiv=document.getElementById("tool-result");
 
 resultDiv.classList.remove("hidden");
-resultDiv.innerHTML="A verificar portas...";
+resultDiv.innerHTML="Verifying Ports...";
 
 try{
 
@@ -32,7 +32,7 @@ renderResults(data.results);
 
 }catch{
 
-resultDiv.innerHTML="Erro ao verificar portas.";
+resultDiv.innerHTML="Error Verifying Ports.";
 
 }
 
@@ -51,9 +51,9 @@ div.innerHTML = `
 
 <thead>
 <tr>
-<th>Porta</th>
-<th>Estado</th>
-<th>Latência</th>
+<th>Port</th>
+<th>Status</th>
+<th>Latency</th>
 </tr>
 </thead>
 

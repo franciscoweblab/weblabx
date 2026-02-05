@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const type = recordSelect.value;
 
     if (!domain) {
-      showError("Introduz um domínio válido.");
+      showError("Enter a valid domain.");
       return;
     }
 
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const domain = domainInput.value.trim();
 
     if (!domain) {
-      showError("Introduz um domínio válido.");
+      showError("Enter a valid domain.");
       return;
     }
 
@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const type = recordSelect.value;
 
     if (!domain) {
-      alert("Introduz um domínio primeiro");
+      alert("Enter a domain first");
       return;
     }
 
@@ -156,11 +156,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
       el.classList.add(val === baseValue ? "ok" : "diff");
       let icon = "✔";
-	  let label = "Propagado";
+	  let label = "Propagated";
 
 	if (val !== baseValue) {
 	icon = "⚠";
-	label = "Diferente";
+	label = "Different";
 }
 
 el.innerHTML = `

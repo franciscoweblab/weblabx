@@ -58,11 +58,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function updateStrength(score) {
     const levels = [
-      { w: 15, c: "#ef4444", t: "Fraca" },
-      { w: 35, c: "#f97316", t: "Média" },
-      { w: 60, c: "#eab308", t: "Boa" },
-      { w: 85, c: "#22c55e", t: "Forte" },
-      { w: 100, c: "#16a34a", t: "Muito forte" }
+      { w: 15, c: "#ef4444", t: "Weak" },
+      { w: 35, c: "#f97316", t: "Medium" },
+      { w: 60, c: "#eab308", t: "Good" },
+      { w: 85, c: "#22c55e", t: "Strong" },
+      { w: 100, c: "#16a34a", t: "Very Strong" }
     ];
 
     const lvl = levels[Math.min(score, levels.length - 1)];
@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
   copyBtn.addEventListener("click", () => {
     if (!result.value) return;
     navigator.clipboard.writeText(result.value);
-    copyBtn.textContent = "Copiado!";
+    copyBtn.textContent = "Copied!";
     setTimeout(() => copyBtn.textContent = "Copiar", 1200);
   });
 

@@ -97,6 +97,24 @@ input[type="number"] {
 .input-lg {
   height: 60px;
 }
+
+.select{
+  width:180px;
+  height:52px;
+  padding:0 16px;
+
+  border-radius:14px;
+  border:1px solid var(--border-color);
+
+  background:var(--bg-main);
+  color:var(--text-main);
+
+  font-family:inherit;
+  font-size:.95rem;
+
+  cursor:pointer;
+}
+
 /* ================= BUTTON SYSTEM ================= */
 
 .btn {

@@ -9,14 +9,14 @@ function buildMXSummary(records) {
   if (!records || records.length === 0) {
     return {
       class: "error",
-      text: "❌ Nenhum registo MX encontrado"
+      text: "❌ No MX records found"
     };
   }
 
   if (records.length === 1) {
     return {
       class: "warn",
-      text: "⚠ Apenas um registo MX encontrado (sem redundância)"
+      text: "⚠ Only one MX record found (no redundancy)"
     };
   }
 
@@ -26,13 +26,13 @@ function buildMXSummary(records) {
   if (unique.size !== priorities.length) {
     return {
       class: "warn",
-      text: "⚠ Existem prioridades MX duplicadas"
+      text: "⚠ Duplicate MX priorities detected"
     };
   }
 
   return {
     class: "ok",
-    text: `✔ MX configurado corretamente (${records.length} servidores)`
+    text: `✔ MX correctly configured (${records.length} servers)`
   };
 }
 
@@ -45,12 +45,12 @@ async function lookupMX() {
 
   if (!domainRegex.test(domain)) {
     out.classList.remove("hidden");
-    out.innerHTML = `<p class="mx-summary error">❌ Domínio inválido</p>`;
+    out.innerHTML = `<p class="mx-summary error">❌ Invalid domain</p>`;
     return;
   }
 
   out.classList.remove("hidden");
-  out.innerHTML = `<p class="mx-summary">A consultar registos MX…</p>`;
+  out.innerHTML = `<p class="mx-summary">Querying MX records…</p>`;
 
   const url =
     dns === "cloudflare"
@@ -67,7 +67,7 @@ async function lookupMX() {
     const data = await res.json();
 
     if (!data.Answer) {
-      out.innerHTML = `<p class="mx-summary error">❌ Nenhum registo MX encontrado</p>`;
+      out.innerHTML = `<p class="mx-summary error">❌ No MX records found<</p>`;
       return;
     }
 
@@ -115,7 +115,7 @@ async function lookupMX() {
       </button>
     `;
   } catch {
-    out.innerHTML = `<p class="mx-summary error">Erro ao consultar registos MX.</p>`;
+    out.innerHTML = `<p class="mx-summary error">Error querying MX records.</p>`;
   }
 }
 
@@ -130,9 +130,9 @@ document.addEventListener("click", e => {
 
   navigator.clipboard.writeText(rows);
 
-  e.target.textContent = "Copiado ✔";
+  e.target.textContent = "Copied ✔";
   setTimeout(() => {
-    e.target.textContent = "Copiar resultados";
+    e.target.textContent = "Copy result";
   }, 1500);
 });
 

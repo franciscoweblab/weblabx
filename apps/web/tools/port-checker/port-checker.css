@@ -71,6 +71,30 @@ flex-wrap:wrap;
   color: var(--text-secondary);
 }
 
+.ports-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-size: .95rem;
+}
+
+.ports-table th {
+  text-align: left;
+  padding: 12px;
+  background: rgba(255,255,255,.04);
+  font-weight: 600;
+}
+
+.ports-table td {
+  padding: 12px;
+  border-top: 1px solid rgba(255,255,255,.06);
+}
+
+.ports-table tr:hover {
+  background: rgba(255,255,255,.03);
+}
+
+
 /* ================= TABLE ================= */
 
 .tool-table{

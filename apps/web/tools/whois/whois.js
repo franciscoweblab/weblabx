@@ -12,39 +12,39 @@ input.addEventListener("keydown", (e) => {
 function mapStatusToBadge(status) {
   const map = {
     "client delete prohibited": {
-      label: "Protegido contra remoção",
+      label: "Protected against deletion",
       type: "safe"
     },
     "client transfer prohibited": {
-      label: "Transferência bloqueada",
+      label: "Transfer locked",
       type: "safe"
     },
     "client update prohibited": {
-      label: "Alterações bloqueadas",
+      label: "Updates locked",
       type: "info"
     },
     "server delete prohibited": {
-      label: "Proteção do registry",
+      label: "Server delete prohibited",
       type: "info"
     },
     "server transfer prohibited": {
-      label: "Transferência bloqueada (registry)",
+      label: "Registry lock enabled",
       type: "info"
     },
     "server update prohibited": {
-      label: "Atualizações bloqueadas (registry)",
+      label: "Server update prohibited",
       type: "info"
     },
     "server hold": {
-      label: "Domínio suspenso",
+      label: "Server hold",
       type: "danger"
     },
     "pending delete": {
-      label: "Em processo de remoção",
+      label: "Pending delete",
       type: "warn"
     },
     "ok": {
-      label: "Sem restrições",
+      label: "OK",
       type: "info"
     }
   };
@@ -61,7 +61,7 @@ async function lookup() {
   const query = input.value.trim();
   if (!query) return;
 
-  result.innerHTML = "⏳ A consultar WHOIS...";
+  result.innerHTML = "⏳ Consulting WHOIS...";
 
   try {
     const res = await fetch(
@@ -80,7 +80,7 @@ async function lookup() {
   } catch (err) {
     result.innerHTML = `
       <span style="color:#ef4444">
-        ❌ Não foi possível obter dados públicos de registo para este domínio.
+        ❌ Unable to retrieve public registration data for this domain.
       </span>
     `;
   }

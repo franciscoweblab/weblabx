@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
   button.addEventListener("click", () => {
     const ip = input.value.trim();
     if (!ip) {
-      showError("Introduz um IP válido.");
+      showError("Enter a valid IP address.");
       return;
     }
     checkIp(ip);
@@ -35,14 +35,14 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ================= CHECK IP ================= */
 
   async function checkIp(ip) {
-    result.innerHTML = "<span>A analisar IP…</span>";
+    result.innerHTML = "<span>Analyzing IP…</span>";
 
     try {
       const res = await fetch(`https://ipwho.is/${ip}`);
       const data = await res.json();
 
       if (!data.success) {
-        showError(data.message || "IP inválido.");
+        showError(data.message || "Invalid IP address.");
         return;
       }
 
@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       result.innerHTML = `
         <div class="risk-wrapper">
-          <div class="risk-label">RISCO ESTIMADO</div>
+          <div class="risk-label">ESTIMATED RISK</div>
           <div class="risk-bar">
             <div class="risk-fill" style="width:${risk.score}%"></div>
           </div>
@@ -63,26 +63,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
         <ul>
           <li><strong>IP:</strong> ${ip}</li>
-          <li><strong>País:</strong> ${data.country}</li>
-          <li><strong>Cidade:</strong> ${data.city || "—"}</li>
+          <li><strong>Country:</strong> ${data.country}</li>
+          <li><strong>City:</strong> ${data.city || "—"}</li>
           <li><strong>ISP:</strong> ${data.connection?.isp || "—"}</li>
-          <li><strong>Tipo:</strong> ${data.type}</li>
-          <li><strong>Proxy/VPN:</strong> ${data.proxy ? "Sim" : "Não"}</li>
+          <li><strong>Type:</strong> ${data.type}</li>
+          <li><strong>Proxy/VPN:</strong> ${data.proxy ? "Yes" : "No"}</li>
         </ul>
 
         <div class="report-box">
-          <div class="report-title">Reportar este IP</div>
+          <div class="report-title">Report this IP</div>
 
           <select id="reportReason">
-            <option value="">Seleciona um motivo</option>
+            <option value="">Select a reason</option>
             <option value="Spam">Spam</option>
             <option value="Bruteforce">Bruteforce</option>
             <option value="Scanner">Scanner</option>
             <option value="Abuse">Abuse</option>
-            <option value="Outro">Outro</option>
+            <option value="Outro">Other</option>
           </select>
 
-          <button id="reportIp">Reportar IP</button>
+          <button id="reportIp">Report IP</button>
           <div class="report-msg" id="reportMsg"></div>
         </div>
       `;
@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
       attachReportHandler(ip);
 
     } catch {
-      showError("Erro ao consultar o serviço.");
+      showError("Error querying the service.");
     }
   }
 
@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     btn.addEventListener("click", async () => {
       if (!reason.value) {
-        msg.textContent = "Seleciona um motivo.";
+        msg.textContent = "Select a reason.";
         msg.style.color = "#facc15";
         return;
       }
@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
       saveLocalReport(ip, reason.value);
       await saveGlobalReport(ip, reason.value);
 
-      msg.textContent = "Obrigado! IP reportado.";
+      msg.textContent = "Thank you! IP reported.";
       msg.style.color = "#22c55e";
 
       setTimeout(() => {
@@ -235,9 +235,9 @@ document.addEventListener("DOMContentLoaded", () => {
     score += Math.min(reportsCount * 15, 45);
     score = Math.min(100, Math.max(0, score));
 
-    if (score >= 70) return { score, level: "high", label: "🔴 Alto risco" };
-    if (score >= 40) return { score, level: "medium", label: "🟡 Atenção" };
-    return { score, level: "low", label: "🟢 Baixo risco" };
+    if (score >= 70) return { score, level: "high", label: "🔴 High risk" };
+    if (score >= 40) return { score, level: "medium", label: "🟡 Warning" };
+    return { score, level: "low", label: "🟢 Low risk" };
   }
 
   function showError(msg) {

@@ -29,7 +29,7 @@
       <header class="subnet-header">
         <h1>Subnet Calculator</h1>
 	   <p class="subnet-description">
-    Calcula subnets IPv4 rapidamente (CIDR, hosts, broadcast).
+    Calculate IPv4 subnets quickly (CIDR, hosts, broadcast).
        </p>
       </header>
 
@@ -53,21 +53,21 @@
 		  >
 
 		<button class="btn btn-primary" type="button" onclick="calculateSubnet()">
-		Calcular
+		Calculate
 		</button>
         </div>
 
         <div id="subnet-result" class="subnet-result hidden">
 
   <div class="result-grid">
-    <div><strong>Classe:</strong> <span id="net-class"></span></div>
+    <div><strong>Class:</strong> <span id="net-class"></span></div>
     <div><strong>CIDR:</strong> <span id="cidr-out"></span></div>
 
     <div><strong>Network:</strong> <span id="network"></span></div>
     <div><strong>Broadcast:</strong> <span id="broadcast"></span></div>
 
-    <div><strong>Primeiro Host:</strong> <span id="first-host"></span></div>
-    <div><strong>Último Host:</strong> <span id="last-host"></span></div>
+    <div><strong>First Host:</strong> <span id="first-host"></span></div>
+    <div><strong>Last Host:</strong> <span id="last-host"></span></div>
 
     <div><strong>Total Hosts:</strong> <span id="hosts"></span></div>
     <div><strong>Subnet Mask:</strong> <span id="subnet-mask"></span></div>
@@ -85,7 +85,7 @@
   </button>
   
 	<button type="button" id="copy-results" class="advanced-toggle">
-  Copiar resultados
+   Copy Results
 	</button>
 
 
@@ -105,60 +105,59 @@
 
   <!-- DESCRIPTION -->
   <div class="tool-card subnet-info-card">
-    <h2>Sobre o IP Subnet Calculator</h2>
+    <h2>About the IP Subnet Calculator</h2>
 
-    <p>
-      <strong>IP Subnet Calculator</strong> é uma ferramenta online gratuita que
-      permite realizar cálculos de subnet de forma rápida e precisa.
-      Através do endereço IP, da máscara de sub-rede (Subnet Mask) ou do CIDR,
-      é possível determinar automaticamente a classe de rede, o número de
-      sub-redes disponíveis e o número máximo de hosts por subnet.
-    </p>
+         <p>
+            <strong>IP Subnet Calculator</strong> is a free online tool that
+            allows you to perform subnet calculations quickly and accurately.
+            Using the IP address, subnet mask, or CIDR,
+            you can automatically determine the network class, the number of
+            available subnets, and the maximum number of hosts per subnet.
+          </p>
 
-    <p>
-      Os resultados incluem informações detalhadas como o endereço de rede
-      (Subnet ID), endereço de broadcast, intervalo de IPs utilizáveis,
-      wildcard mask (útil para ACLs – Access Control Lists) e a representação
-      hexadecimal do endereço IP.
-    </p>
+		  <p>
+            The results include detailed information such as the network address
+            (Subnet ID), broadcast address, usable IP range,
+            wildcard mask (useful for ACLs – Access Control Lists), and the
+            hexadecimal representation of the IP address.
+          </p>
 
-    <p>
-      Esta ferramenta é ideal para administradores de sistemas, engenheiros de
-      redes e profissionais de IT que necessitam de planear e segmentar redes
-      IPv4 de forma eficiente.
-    </p>
+		  <p>
+            This tool is ideal for system administrators, network engineers,
+            and IT professionals who need to plan and segment IPv4 networks efficiently.
+          </p>
   </div>
 
   <!-- FAQ -->
   <div class="tool-card subnet-faq">
-    <h2>Perguntas Frequentes</h2>
+    <h2>FAQ</h2>
 
     <div class="faq-item">
-      <h3>O que é uma subnet e para que serve?</h3>
+      <h3>What is a subnet and what is it used for?</h3>
       <p>
-        Uma subnet (sub-rede) é uma divisão lógica de uma rede IP que permite
-        organizar, segmentar e melhorar a gestão do tráfego de rede,
-        aumentando a segurança e a eficiência.
+          A subnet is a logical division of an IP network that helps
+          organize, segment, and improve network traffic management,
+          increasing security and efficiency.
       </p>
     </div>
 
     <div class="faq-item">
-      <h3>Qual a diferença entre Subnet Mask e CIDR?</h3>
-      <p>
-        A Subnet Mask utiliza o formato decimal, como
-        <code>255.255.255.0</code>, enquanto o CIDR utiliza um prefixo numérico,
-        como <code>/24</code>. Ambos representam a mesma informação,
-        apenas em formatos diferentes.
-      </p>
+      <h3>What is the difference between a Subnet Mask and CIDR?</h3>
+            <p>
+              A subnet mask uses decimal format, such as
+              <code>255.255.255.0</code>, while CIDR uses a numeric prefix,
+              such as <code>/24</code>. Both represent the same information,
+              just in different formats.
+            </p>
     </div>
 
     <div class="faq-item">
-      <h3>Para que serve a Wildcard Mask?</h3>
-      <p>
-        A Wildcard Mask é utilizada principalmente em ACLs
-        (Access Control Lists) para definir quais os endereços IP que devem ser
-        permitidos ou bloqueados numa rede.
-      </p>
+      <h3>What is the Wildcard Mask used for?</h3>
+            <p>
+              The wildcard mask is primarily used in ACLs
+              (Access Control Lists) to define which IP addresses should be
+              allowed or blocked on a network.
+            </p>
     </div>
 
   </div>
@@ -168,7 +167,7 @@
 
       <!-- BACK -->
       <a href="/" class="btn-link subnet-back">
-        ← Voltar
+        ← Back
       </a>
 
     </div>
