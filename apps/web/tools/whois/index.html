@@ -13,8 +13,9 @@
 
   <script src="/theme.js"></script>
   <script src="/analytics.js"></script>
-  <link rel="stylesheet" href="whois.css?v=9">
   <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="whois.css?v=9">
+
 </head>
 
 <body class="whois-page">
@@ -41,12 +42,13 @@
       <div class="tool-card">
         <div class="subnet-row">
           <input
+		    class="input"
             type="text"
             id="whois-input"
             placeholder="ex: google.com ou 8.8.8.8"
             autocomplete="off"
           />
-          <button id="whois-btn">Consultar</button>
+          <button class="btn btn-primary" id="whois-btn">Consultar</button>
         </div>
 
         <div id="whois-result" class="subnet-result"></div>

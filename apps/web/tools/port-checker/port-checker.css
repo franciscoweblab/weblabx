@@ -3,8 +3,11 @@
 .tool-form{
     display:flex;
     gap:16px;
-    align-items:stretch;
-    margin-top:4px;
+    align-items:center;
+    justify-content:flex-start;
+    padding:20px 0;   
+    width:100%; 
+flex-wrap:wrap;	
 }
 
 /* campo principal */
@@ -18,7 +21,6 @@
     max-width:180px;
 }
 
-/* botão não deve esticar */
 .tool-form button{
     flex:0;
     white-space:nowrap;
@@ -26,6 +28,10 @@
     border-radius:14px;
 }
 
+.tool-card-form{
+    min-height:160px;
+	display:block;
+}
 
 /* ================= RESULT ================= */
 
@@ -33,6 +39,37 @@
     margin-top:32px;
 }
 
+/* ================= INFO SECTION ================= */
+
+.subnet-info {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  align-items: center;
+  margin-bottom: 96px;
+}
+
+.subnet-info-card,
+.subnet-faq {
+  padding: 48px;
+  border-radius: 28px;
+  max-width: 860px;
+}
+
+/* títulos de secção */
+.subnet-info-card h2,
+.subnet-faq h2 {
+  font-size: 1.9rem;
+  margin-bottom: 24px;
+}
+
+/* texto */
+.subnet-info-card p {
+  font-size: 1rem;
+  line-height: 1.75;
+  margin-bottom: 18px;
+  color: var(--text-secondary);
+}
 
 /* ================= TABLE ================= */
 
@@ -131,8 +168,8 @@
 ================================================== */
 
 .tool-guide {
-    max-width: 720px;
-    margin: 72px auto;
+    max-width: 860px;
+    margin: var(--section-gap) auto;
     padding: 28px 32px;
 
     border-radius: 16px;
@@ -157,14 +194,6 @@
 }
 
 /* ================= CARD SPACING ================= */
-
-.tool-card{
-    margin-top:32px;
-    max-width:720px;
-    width:100%;
-}
-}
-
 
 
 /* ================= MOBILE ================= */

@@ -26,6 +26,7 @@ content="Verifique portas TCP abertas instantaneamente. Ferramenta gratuita para
 </nav>
 
 <main class="tool-page">
+<div class="tool-container">
 
 <header class="tool-header">
   <h1>Port Checker</h1>
@@ -37,11 +38,12 @@ content="Verifique portas TCP abertas instantaneamente. Ferramenta gratuita para
 
 
 <!-- TOOL CARD -->
-<section class="tool-card">
+<section class="tool-card tool-card-form">
 
 <div class="tool-form">
 
 <input
+  class="input"
   id="host"
   type="text"
   placeholder="ex: google.com ou 8.8.8.8"
@@ -50,12 +52,13 @@ content="Verifique portas TCP abertas instantaneamente. Ferramenta gratuita para
 >
 
 <input
+  class="input"
   id="ports"
   type="text"
   placeholder="ex: 80,443,22"
 >
 
-<button onclick="scanPorts()">
+<button class="btn btn-primary" onclick="scanPorts()">
 Scan Ports
 </button>
 
@@ -88,9 +91,8 @@ serviços inacessíveis e erros de configuração de rede.
 
 
 
-<section class="tool-info">
 
-<div class="tool-card">
+<div class="tool-card subnet-info-card">
 
 <h2>Sobre o Port Checker</h2>
 
@@ -124,23 +126,24 @@ está corretamente exposta.
 <div class="faq-item">
 <h3>O que significa uma porta aberta?</h3>
 <p>
-Indica que existe um serviço ativo a aceitar ligações.
+Uma porta aberta indica que existe um serviço ativo no servidor ou dispositivo a aceitar ligações externas. 
+Isto significa que a comunicação está disponível e que aplicações, websites ou sistemas podem estabelecer ligação através dessa porta específica.
 </p>
 </div>
 
 <div class="faq-item">
 <h3>O que é uma porta filtrada?</h3>
 <p>
-Normalmente significa que uma firewall está a bloquear
-o pedido externo.
+Uma porta filtrada normalmente indica que uma firewall, router ou sistema de segurança está a bloquear ou a limitar o acesso externo. 
+Nestes casos, não é possível confirmar se o serviço está ativo, pois os pedidos são impedidos antes de chegar ao destino.
 </p>
 </div>
 
 <div class="faq-item">
 <h3>Porque devo verificar portas?</h3>
 <p>
-Para diagnosticar falhas de ligação,
-validar regras de firewall e garantir acessibilidade.
+Verificar portas é essencial para diagnosticar problemas de conectividade, confirmar se as regras de firewall estão corretamente configuradas e garantir que serviços críticos estão acessíveis. 
+Esta prática ajuda a reforçar a segurança da rede, identificar configurações incorretas e manter o bom funcionamento de aplicações e servidores.
 </p>
 </div>
 
@@ -149,8 +152,10 @@ validar regras de firewall e garantir acessibilidade.
 </section>
 
 
-<a href="/" class="tool-back">← Voltar</a>
-
+ <footer class="tool-footer">
+    <a href="/" class="back-link">← Voltar</a>
+  </footer>
+</div> 
 </main>
 
 <script src="port-checker.js"></script>

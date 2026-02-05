@@ -37,24 +37,24 @@
       <section class="tool-card subnet-card">
 
         <div class="subnet-row">
-          <input
-            id="ip"
-            type="text"
-            placeholder="192.168.1.10"
-            autocomplete="off"
-          >
+          <input class="input input-sm"
+		id="ip"
+		type="text"
+		placeholder="192.168.1.10"
+		autocomplete="off"
+		  >
+		<input
+		class="input input-sm"
+		id="cidr"
+		type="number"
+		min="0"
+		max="32"
+		placeholder="24"
+		  >
 
-          <input
-            id="cidr"
-            type="number"
-            min="0"
-            max="32"
-            placeholder="24"
-          >
-
-          <button type="button" onclick="calculateSubnet()">
-            Calcular
-          </button>
+		<button class="btn btn-primary" type="button" onclick="calculateSubnet()">
+		Calcular
+		</button>
         </div>
 
         <div id="subnet-result" class="subnet-result hidden">
