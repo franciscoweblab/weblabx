@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>IP Lookup Tool – Check IP Address Details Instantly | WebLabX</title>
+
+<meta name="description" content="Instantly lookup any IP address. View ASN, ISP, hostname, geolocation and network details in seconds with WebLabX's professional IP Lookup tool.">
+
+<link rel="canonical" href="https://weblabx.com/tools/ip-lookup/">
+
+<!-- OpenGraph -->
+<meta property="og:title" content="IP Lookup Tool – WebLabX">
+<meta property="og:description" content="Analyze any IP address instantly. Get ASN, ISP, hostname and location data in a clean, engineer-focused interface.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://weblabx.com/tools/ip-lookup/">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="IP Lookup Tool – WebLabX">
+<meta name="twitter:description" content="Fast, clean and professional IP address lookup. Built for developers and infrastructure teams.">
+
+<link rel="stylesheet" href="/style.css">
+<script src="/theme.js" defer></script>
+
+
+</head>
+
+<body>
+
+<!-- ================= MENU ================= -->
+<nav class="menu">
+    <div class="logo">
+        <a href="/">WebLab<span>X</span></a>
+    </div>
+</nav>
+
+
+<!-- ================= TOOL ================= -->
+
+<main class="tool-page">
+
+    <header class="tool-header">
+        <h1>IP Lookup</h1>
+        <p>
+            Retrieve detailed network intelligence for any IPv4 or IPv6 address.
+            Analyze ASN, organization, hostname and geolocation instantly.
+        </p>
+    </header>
+
+    <div class="tool-container">
+
+        <!-- FORM -->
+        <div class="tool-card tool-card-form">
+
+            <input
+                id="ipInput"
+                class="input input-lg"
+                placeholder="Enter IP address (e.g. 8.8.8.8)"
+                autocomplete="off"
+            >
+
+            <button id="lookupBtn" class="btn btn-primary btn-pill">
+                Lookup
+            </button>
+
+        </div>
+
+
+        <!-- RESULTS -->
+        <div id="resultCard" class="tool-card" style="display:none;">
+            <table style="width:100%; border-collapse:collapse;">
+                <tbody id="resultBody"></tbody>
+            </table>
+        </div>
+
+    </div>
+
+</main>
+
+
+<!-- ================= SEO CONTENT ================= -->
+
+<section class="faq-wrapper">
+
+    <div class="tool-card">
+
+        <h2>What is an IP Lookup?</h2>
+
+        <div class="faq-item">
+            <p>
+                An IP lookup allows you to analyze a public IP address and retrieve key network data such as the
+                autonomous system number (ASN), internet service provider (ISP), hostname and approximate geographic location.
+            </p>
+
+            <p>
+                Engineers, security teams and infrastructure professionals commonly use IP lookups to investigate traffic,
+                troubleshoot connectivity issues and understand network ownership.
+            </p>
+        </div>
+
+
+        <div class="faq-item">
+            <h3>What information can you obtain from an IP address?</h3>
+
+            <p>Typical IP intelligence includes:</p>
+
+            <ul>
+                <li>Network owner and ASN</li>
+                <li>Internet service provider</li>
+                <li>Reverse DNS hostname</li>
+                <li>Approximate location</li>
+                <li>Timezone</li>
+            </ul>
+
+        </div>
+
+
+        <div class="faq-item">
+            <h3>Is IP geolocation accurate?</h3>
+
+            <p>
+                IP geolocation provides an approximation based on registry and routing data.
+                While country-level accuracy is typically high, city-level precision can vary depending on the provider and network configuration.
+            </p>
+
+            <p>
+                IP lookup should be used for network analysis — not precise physical identification.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= INTERNAL LINKS ================= -->
+
+<section class="tool-footer">
+
+    <a href="/tools/reverse-ip/" class="back-link">
+        Reverse IP Lookup →
+    </a>
+
+</section>
+
+
+<script src="ip-lookup.js"></script>
+
+
+
+</body>
+</html>
