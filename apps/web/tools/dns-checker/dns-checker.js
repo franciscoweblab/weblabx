@@ -1,181 +1,316 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* ================= ELEMENTOS ================= */
+const btn = document.getElementById("checkDns");
+const recheckBtn = document.getElementById("recheck");
 
-  const btnSingle = document.getElementById("checkDns");
-  const btnAll = document.getElementById("checkAll");
-  const btnPropagation = document.getElementById("checkPropagation");
+const domainInput = document.getElementById("domain");
+const recordSelect = document.getElementById("record");
 
-  const domainInput = document.getElementById("domain");
-  const recordSelect = document.getElementById("record");
-  const resultBox = document.getElementById("result");
+const resultCard = document.getElementById("result-card");
+const resolversCard = document.getElementById("resolvers-card");
 
-  const mapBox = document.getElementById("dnsMap");
-  const mapGrid = document.getElementById("mapGrid");
+const consensusEl = document.getElementById("consensus-label");
+const dominantEl = document.getElementById("dominant");
+const respondersEl = document.getElementById("responders");
 
-  /* ================= CONSTANTES ================= */
+const resolverList = document.getElementById("resolver-list");
 
-  const ALL_RECORDS = [
-    "A","AAAA","CNAME","MX","TXT","NS","SOA",
-    "SRV","PTR","CAA","DNSKEY","DS","NAPTR",
-    "HTTPS","SVCB"
-  ];
+const params = new URLSearchParams(window.location.search);
 
-  // resolvers CORS-safe (frontend)
-  const RESOLVERS = [
-    { name: "Google (US)", url: "https://dns.google/resolve" },
-    { name: "Google (EU)", url: "https://dns.google/resolve" },
-    { name: "Google (AS)", url: "https://dns.google/resolve" }
-  ];
+const autoDomain = params.get("domain");
+const autoType = params.get("type");
 
-  /* ================= DNS NORMAL ================= */
+if(autoDomain){
 
-  btnSingle.addEventListener("click", () => {
-    const domain = domainInput.value.trim();
-    const type = recordSelect.value;
+  domainInput.value = autoDomain;
 
-    if (!domain) {
-      showError("Enter a valid domain.");
-      return;
-    }
-
-    runQueries(domain, [type]);
-  });
-
-  btnAll.addEventListener("click", () => {
-    const domain = domainInput.value.trim();
-
-    if (!domain) {
-      showError("Enter a valid domain.");
-      return;
-    }
-
-    runQueries(domain, ALL_RECORDS);
-  });
-
-  async function runQueries(domain, records) {
-    resultBox.textContent = "A consultar DNS...";
-
-    const queries = records.map(type =>
-      fetch(`https://dns.google/resolve?name=${domain}&type=${type}`)
-        .then(r => r.json())
-        .then(data => ({ type, data }))
-        .catch(() => ({ type, error: true }))
-    );
-
-    const results = await Promise.all(queries);
-    let html = "";
-
-    results.forEach(({ type, data, error }) => {
-      let block = "";
-
-      if (error || !data || data.Status !== 0) {
-        block = `<div style="opacity:.5">— sem registos —</div>`;
-      } else if (data.Answer?.length) {
-        block = data.Answer.map(r =>
-          `<div><strong>${type}</strong> → ${r.data}</div>`
-        ).join("");
-      } else {
-        block = `<div style="opacity:.5">— sem registos —</div>`;
-      }
-
-      html += `
-        <div style="margin-top:18px"><strong>${type}</strong></div>
-        ${block}
-      `;
-    });
-
-    resultBox.innerHTML = html;
+  if(autoType){
+    recordSelect.value = autoType;
   }
 
-  /* ================= PROPAGAÇÃO DNS ================= */
-
-  btnPropagation.addEventListener("click", async () => {
-    const domain = domainInput.value.trim();
-    const type = recordSelect.value;
-
-    if (!domain) {
-      alert("Enter a domain first");
-      return;
-    }
-
-    mapBox.classList.remove("hidden");
-    mapBox.scrollIntoView({ behavior: "smooth" });
-    mapGrid.innerHTML = "";
-
-    // UI inicial
-    RESOLVERS.forEach(r => {
-      const el = document.createElement("div");
-      el.className = "map-point loading";
-      el.dataset.name = r.name;
-      el.innerHTML = `<strong>${r.name}</strong><br>A consultar...`;
-      mapGrid.appendChild(el);
-    });
-
-    // valor de referência (Google)
-    let baseValue = null;
-    try {
-      const base = await fetch(
-        `https://dns.google/resolve?name=${domain}&type=${type}`
-      ).then(r => r.json());
-
-      baseValue = base.Answer?.[0]?.data || null;
-    } catch {
-      baseValue = null;
-    }
-
-    // queries paralelas
-    const checks = RESOLVERS.map(r =>
-      fetch(`${r.url}?name=${domain}&type=${type}`)
-        .then(res => res.json())
-        .then(data => ({ name: r.name, data }))
-        .catch(() => ({ name: r.name, error: true }))
-    );
-
-    const results = await Promise.allSettled(checks);
-
-    results.forEach(res => {
-      if (res.status !== "fulfilled") return;
-
-      const { name, data, error } = res.value;
-
-      const el = [...mapGrid.children].find(
-        e => e.dataset.name === name
-      );
-      if (!el) return;
-
-      el.classList.remove("loading");
-
-      if (error || !data || !data.Answer) {
-        el.classList.add("error");
-        el.innerHTML = `<strong>${name}</strong><br>Sem resposta`;
-        return;
-      }
-
-      const val = data.Answer[0]?.data;
-
-      el.classList.add(val === baseValue ? "ok" : "diff");
-      let icon = "✔";
-	  let label = "Propagated";
-
-	if (val !== baseValue) {
-	icon = "⚠";
-	label = "Different";
+  runLookup();
 }
 
-el.innerHTML = `
-  <strong>${icon} ${name}</strong><br>
-  ${val}<br>
-  <span style="opacity:.7;font-size:.75rem">${label}</span>
-`;
 
-    });
-  });
+const API_BASE =
+  location.hostname === "weblabx.com"
+    ? ""
+    : "https://weblabx.com";
 
-  /* ================= HELPERS ================= */
 
-  function showError(msg) {
-    resultBox.textContent = "⚠️ " + msg;
+/* ================= API ================= */
+
+async function checkDNS(domain,type){
+
+  const res = await fetch(
+    `${API_BASE}/api/dns?domain=${domain}&type=${type}`
+  );
+
+  if(!res.ok) throw new Error("DNS lookup failed");
+
+  return res.json();
+}
+
+
+/* ================= GLOBAL STATUS ================= */
+
+function globalStatus(propagation){
+
+  if(propagation === null || propagation === undefined || isNaN(propagation)){
+    return {
+      label: "Unknown",
+      class: "status-neutral",
+      note: "Unable to determine DNS status."
+    };
   }
 
+  if(propagation >= 90){
+    return {
+      label: "Fully propagated",
+      class: "status-good",
+      note: "All monitored DNS resolvers agree globally."
+    };
+  }
+
+  if(propagation >= 50){
+    return {
+      label: "Propagating globally",
+      class: "status-progress",
+      note: "DNS updates are spreading across networks."
+    };
+  }
+
+  return {
+    label: "Limited propagation",
+    class: "status-neutral",
+    note: "Record visible only in some regions."
+  };
+}
+
+
+/* ================= MAP STATUS ================= */
+
+function stateClass(state){
+
+  if(state === "propagated") return "ok";
+  if(state === "different") return "diff";
+
+  return "error";
+}
+
+
+/* ================= LOADING UI ================= */
+
+function showLoading(){
+
+  consensusEl.innerHTML = `
+    <div class="dns-status status-progress">
+        <div class="dns-label">Running global DNS verification…</div>
+        <div class="dns-note">Contacting distributed DNS networks.</div>
+    </div>
+  `;
+
+  dominantEl.textContent="—";
+  respondersEl.textContent="—";
+}
+
+
+/* Fake resolver animation (perceived performance boost) */
+
+function animateResolvers(){
+
+  const steps = [
+    "Contacting Cloudflare…",
+    "Contacting Google Public DNS…",
+    "Contacting AdGuard…",
+    "Querying NextDNS edge…",
+    "Aggregating resolver responses…"
+  ];
+
+  let i = 0;
+
+  return setInterval(()=>{
+
+    if(i < steps.length){
+
+      consensusEl.innerHTML = `
+        <div class="dns-status status-progress">
+            <div class="dns-label">${steps[i]}</div>
+            <div class="dns-note">Running global DNS verification.</div>
+        </div>
+      `;
+
+      i++;
+    }
+
+  }, 420); // sweet spot
+}
+
+
+/* ================= RENDER ================= */
+
+function render(data){
+
+  resultCard.classList.remove("hidden");
+  resolversCard.classList.remove("hidden");
+
+  const results = Array.isArray(data.results) ? data.results : [];
+
+  const respondersCount =
+    results.filter(r => r.state !== "no-response").length;
+
+  const realPropagation = results.length
+    ? Math.round((respondersCount / results.length) * 100)
+    : 0;
+
+  const status = globalStatus(realPropagation);
+
+  consensusEl.innerHTML = `
+    <div class="dns-status ${status.class}">
+        <div class="dns-label">${status.label}</div>
+        <div class="dns-note">${status.note}</div>
+    </div>
+  `;
+
+  dominantEl.textContent = data.dominant ?? "—";
+  respondersEl.textContent = `${respondersCount}/${results.length}`;
+
+  resolverList.innerHTML = "";
+
+
+  const mapIds = {
+    "Cloudflare":"map-cloudflare",
+    "Google":"map-google",
+    "AdGuard":"map-adguard",
+    "CleanBrowsing":"map-clean",
+    "NextDNS":"map-nextdns"
+  };
+
+
+  results
+    .sort((a,b)=>{
+      const order = {propagated:0, different:1, "no-response":2};
+      return order[a.state] - order[b.state];
+    })
+    .forEach(r=>{
+
+      const tr = document.createElement("tr");
+
+      tr.innerHTML = `
+        <td>${r.resolver}</td>
+        <td>${r.region}</td>
+        <td>${r.value ?? "No response"}</td>
+        <td>${r.ttl ?? "—"}</td>
+        <td>
+          <span class="status-badge status-${stateClass(r.state)}">
+            ${r.state}
+          </span>
+        </td>
+      `;
+
+      resolverList.appendChild(tr);
+
+      const id = mapIds[r.resolver];
+
+      if(id){
+        const el = document.getElementById(id);
+        if(!el) return;
+
+        el.classList.remove("ok","diff","error");
+        el.classList.add(stateClass(r.state));
+      }
+
+    });
+
+}
+
+
+/* ================= RUN LOOKUP ================= */
+
+async function runLookup(){
+
+  const domain = domainInput.value.trim();
+  const type = recordSelect.value;
+
+  if(!domain) return;
+
+  const newUrl = `${window.location.pathname}?domain=${encodeURIComponent(domain)}&type=${type}`;
+  window.history.replaceState(null, "", newUrl);
+
+  showLoading();
+  resolverList.innerHTML="";
+
+
+  showLoading();
+  resolverList.innerHTML="";
+
+  const loader = animateResolvers();
+
+  const MIN_LOADING_TIME = 750;
+  const start = performance.now();
+
+  try{
+
+    const data = await checkDNS(domain,type);
+
+    const elapsed = performance.now() - start;
+    const remaining = MIN_LOADING_TIME - elapsed;
+
+    setTimeout(()=>{
+
+      clearInterval(loader);
+      render(data);
+
+    }, remaining > 0 ? remaining : 0);
+
+  }
+  catch(err){
+
+    clearInterval(loader);
+
+    consensusEl.innerHTML = `
+      <div class="dns-status status-neutral">
+          <div class="dns-label">Lookup failed</div>
+          <div class="dns-note">Unable to reach DNS resolvers.</div>
+      </div>
+    `;
+  }
+
+}
+
+
+
+/* ================= EVENTS ================= */
+
+btn.addEventListener("click",runLookup);
+
+if(recheckBtn){
+  recheckBtn.addEventListener("click",runLookup);
+}
+
+domainInput.addEventListener("keydown",e=>{
+  if(e.key==="Enter") runLookup();
 });
+
+});
+
+document.querySelectorAll(".faq-question")
+.forEach(btn=>{
+
+  btn.addEventListener("click",()=>{
+
+    const current = btn.parentElement;
+
+    document.querySelectorAll(".faq-item")
+      .forEach(item=>{
+        if(item !== current){
+          item.classList.remove("open");
+        }
+      });
+
+    current.classList.toggle("open");
+
+  });
+
+});
+

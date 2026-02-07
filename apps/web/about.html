@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>About WebLabX | Technical Tools for Engineers</title>
+  <meta name="description" content="Learn about WebLabX — a performance-first platform of technical tools built for sysadmins, developers, and IT professionals." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="About WebLabX" />
+  <meta property="og:description" content="Performance-first technical tools built for engineers." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://weblabx.com/about/" />
+
+  <link rel="canonical" href="https://weblabx.com/about/" />
+  <script src="/theme.js"></script>
+  <script src="/analytics.js"></script>
+  <link rel="stylesheet" href="/style.css" />
+
+  <!-- Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "WebLabX",
+    "url": "https://weblabx.com",
+    "description": "A platform of fast, reliable technical tools for sysadmins, developers, and IT professionals."
+  }
+  </script>
+
+</head>
+<body>
+ <!-- MENU -->
+  <nav class="menu">
+    <div class="logo">
+      <a href="/">WebLab<span>X</span></a>
+    </div>
+
+    <div class="menu-links">
+      <a href="#tools">Tools</a>
+      <a href="#about">About</a>
+
+      <button id="theme-toggle" class="theme-toggle" aria-label="Alternar dark mode" title="Alternar tema"> 🌙 </button>
+    </div>
+  </nav>
+    </div>
+  </nav>
+<main class="tool-page">
+  <!-- using wide container safely without affecting tools -->
+  <div class="tool-container tool-container-wide">
+
+    <!-- Header -->
+    <header class="tool-header">
+      <h1>Built for Engineers Who Prefer Signal Over Noise</h1>
+      <p>
+        WebLabX is a platform of technical tools designed for professionals who value speed, reliability, and clarity.
+        Whether you're debugging infrastructure, validating configurations, or running diagnostics — the goal is simple:
+        provide tools that work instantly and behave predictably.
+      </p>
+    </header>
+
+    <!-- GRID (safe extension class) -->
+    <div class="about-grid">
+
+      <section class="tool-card">
+        <h2>Engineering First</h2>
+        <p>
+          WebLabX is intentionally built with a minimal, performance-oriented stack to reduce failure points and keep the platform scalable.
+        </p>
+
+        <ul class="list-clean">
+          <li>Vanilla HTML, CSS, and JavaScript</li>
+          <li>Serverless architecture powered by Cloudflare Workers</li>
+          <li>Global CDN delivery</li>
+          <li>Performance-first decisions</li>
+        </ul>
+      </section>
+
+      <section class="tool-card">
+        <h2>Operational Utility</h2>
+        <p>
+          Every tool is created to solve real technical problems. If it does not provide operational value, it does not belong on the platform.
+        </p>
+
+        <ul class="list-clean">
+          <li>Clean and predictable interfaces</li>
+          <li>Consistent layouts across tools</li>
+          <li>No unnecessary friction</li>
+          <li>Fast execution</li>
+        </ul>
+      </section>
+
+      <section class="tool-card">
+        <h2>Independent by Design</h2>
+        <p>
+          WebLabX is built with full control over its architecture — prioritizing transparency, privacy, and long-term maintainability.
+        </p>
+
+        <ul class="list-clean">
+          <li>No aggressive trackers</li>
+          <li>No dark patterns</li>
+          <li>No feature bloat</li>
+          <li>No unnecessary data collection</li>
+        </ul>
+      </section>
+
+      <section class="tool-card">
+        <h2>Why WebLabX Exists</h2>
+        <p>
+          WebLabX was created out of frustration with slow, ad-heavy, unreliable online tools. Engineers deserve utilities that are fast, trustworthy, and built with intention — not traffic farms optimized for clicks.
+        </p>
+
+        <ul class="list-clean">
+          <li>Performance is treated as a feature</li>
+          <li>Interfaces favor clarity over novelty</li>
+          <li>Tools are built for real operational workflows</li>
+          <li>The platform evolves with discipline — not hype</li>
+        </ul>
+      </section>
+
+    </div>
+
+    <!-- FULL WIDTH CTA -->
+    <section class="tool-card">
+      <h2>A Growing Technical Surface</h2>
+      <p>
+        WebLabX is expanding into a structured toolbox focused on infrastructure, networking, and diagnostics —
+        becoming a reliable reference point for engineers who need fast answers without jumping between fragmented utilities.
+      </p>
+
+      <a href="/tools/" class="btn btn-primary btn-pill">
+        Explore Tools
+      </a>
+    </section>
+
+  </div>
+</main>
+
+<script src="/analytics.js"></script>
+<script>     // ================= THEME TOGGLE =================
+    document.addEventListener("DOMContentLoaded", () => {
+
+      const toggle = document.getElementById("theme-toggle");
+      if (!toggle) return;
+
+      const html = document.documentElement;
+
+      const currentTheme = html.getAttribute("data-theme");
+      
+
+      toggle.addEventListener("click", () => {
+
+        const next =
+          html.getAttribute("data-theme") === "dark"
+            ? "light"
+            : "dark";
+
+        html.setAttribute("data-theme", next);
+        localStorage.setItem("theme", next);
+
+        
+      });
+    });
+</script>
+
+</body>
+</html>

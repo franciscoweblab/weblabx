@@ -115,6 +115,30 @@ input[type="number"] {
   cursor:pointer;
 }
 
+.world-map path{
+    fill: var(--primary-soft);
+}
+
+.dns-note{
+  margin-top:10px;
+  font-size:.60rem;
+  color:var(--text-secondary);
+  text-align:center;
+  max-width:720px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.tool-card--center{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+
+
 /* ================= BUTTON SYSTEM ================= */
 
 .btn {
@@ -183,9 +207,8 @@ input[type="number"] {
 }
 
 .tool-container-wide{
-    width:100%;
-    max-width:1200px;
-    margin:0 auto;
+  width:full;
+  margin:auto;
 }
 
 
@@ -307,6 +330,39 @@ input[type="number"] {
 	margin:12px 0 20px;
 }
 
+.tool-card li{
+    position:relative;
+    padding-left:22px;
+    margin:10px 0;
+    color:var(--text-secondary);
+}
+
+.tool-card li::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:9px;
+
+    width:6px;
+    height:6px;
+    border-radius:50%;
+
+    background:var(--primary);
+}
+
+.tool-card ul{
+    list-style: none;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.about-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:28px;
+    width:100%;
+}
+
 /* ================= TOOL SYSTEM ================= */
 
 
@@ -331,7 +387,7 @@ input[type="number"] {
 
 .tool-header h1{
   font-size:3.9rem;
-  letter-spacing:-0.02em;
+  letter-spacing:-0.03em;
 }
 
 .tool-header p{
@@ -351,8 +407,10 @@ input[type="number"] {
 
 /* ================= FAQ SYSTEM ================= */
 
-.faq-wrapper {
-  padding: 0 6vw 120px;
+.faq-wrapper{
+  width:min(1400px, 92%);
+  margin:0 auto;
+  padding-bottom:120px;
 }
 
 .faq-box {
