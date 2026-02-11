@@ -1,0 +1,160 @@
+/* ================= DNS BENCHMARK LAYOUT ================= */
+
+.dns-header{
+    margin-top:60px;
+    margin-bottom:10px;
+}
+
+.dns-header h1{
+    font-size:2.6rem;
+    letter-spacing:-0.02em;
+}
+
+.dns-header p{
+    color:var(--text-secondary);
+}
+
+
+
+/* INFO */
+
+.dns-info{
+    padding:16px;
+    border:1px solid var(--border-color);
+    border-radius:10px;
+    background:var(--bg-secondary);
+    margin:18px 0;
+}
+
+
+
+/* TABS */
+
+.dns-tabs{
+    display:flex;
+    gap:28px;
+    border-bottom:1px solid var(--border-color);
+    margin-bottom:20px;
+}
+
+.dns-tab{
+    background:none;
+    border:none;
+    padding:10px 0;
+    font-weight:600;
+    color:var(--text-secondary);
+    cursor:pointer;
+    position:relative;
+}
+
+.dns-tab.active{
+    color:var(--text-main);
+}
+
+.dns-tab.active::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-1px;
+    width:100%;
+    height:2px;
+    background:var(--primary);
+}
+
+
+
+/* FILTER STRIP */
+
+.dns-filters{
+    display:flex;
+    gap:16px;
+    align-items:flex-end;
+    flex-wrap:wrap;
+    margin-bottom:20px;
+}
+
+.dns-filter-group{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    font-size:.8rem;
+    color:var(--text-secondary);
+}
+
+
+
+/* TABLE */
+
+.dns-table{
+    border:1px solid var(--border-color);
+    border-radius:12px;
+    overflow:hidden;
+}
+
+#resultsTable{
+    width:100%;
+    border-collapse:collapse;
+    font-size:.92rem;
+}
+
+#resultsTable thead{
+    background:var(--bg-secondary);
+}
+
+#resultsTable th{
+    text-align:left;
+    padding:14px;
+    font-weight:600;
+}
+
+#resultsTable td{
+    padding:14px;
+    border-top:1px solid var(--border-color);
+}
+
+#resultsTable tbody tr:hover{
+    background:var(--bg-hover);
+}
+
+
+
+/* PERFORMANCE BAR */
+
+.perf-bar-wrap{
+    width:100%;
+    height:10px;
+    background:var(--bg-hover);
+    border-radius:999px;
+    overflow:hidden;
+}
+
+.perf-bar{
+    height:10px;
+    border-radius:999px;
+    transition: width .7s cubic-bezier(.4,0,.2,1);
+}
+
+
+.dns-controls{
+display:flex;
+gap:24px;
+align-items:end;
+flex-wrap:wrap;
+}
+
+.dns-control{
+display:flex;
+flex-direction:column;
+gap:6px;
+}
+
+.dns-toggle{
+flex-direction:row;
+align-items:center;
+gap:8px;
+}
+
+.dns-toggle .active{
+background:var(--primary);
+color:white;
+}
